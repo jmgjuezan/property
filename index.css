@@ -1,0 +1,95 @@
+:root {
+  --common-background-color: #9fc5e9;
+  --common-text-color: #073762;
+  --title-background-color: #3d85c5;
+  --title-text-color: white;
+}
+
+html {
+  background-color: var(--common-background-color);
+}
+
+/* TABLE */
+
+.table tr th {
+  background-color: var(--title-background-color);
+}
+
+.table thead tr th {
+  border-color: var(--title-background-color);
+}
+
+.table tr td {
+  background-color: var(--common-background-color);
+  color: var(--common-text-color);
+}
+
+/* CONTENT */
+
+.main-content .title,
+.main-content .subtitle,
+.main-content p {
+  color: var(--common-text-color);
+}
+
+h2 {
+  padding-top: 20px;
+}
+
+.main-content {
+  display: none;
+}
+
+#dashboard:target,
+#dues:target,
+#rules:target,
+#contact:target {
+  display: block;
+}
+
+/* HEADER */
+
+.main-header {
+  background-color: var(--title-background-color);
+  color: var(--title-text-color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--title-text-color);
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+}
+
+.logo img {
+  padding-right: 10px;
+}
+
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav ul li a {
+  color: var(--title-text-color);
+  text-decoration: none;
+  padding: 0 15px;
+  display: block;
+  font-weight: bold;
+}
+
+.main-nav ul li a:hover {
+  background-color: var(--title-background-color);
+  color: var(--common-background-color);
+}
+
+main {
+  padding: 20px;
+}

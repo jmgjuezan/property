@@ -1,0 +1,36 @@
+{
+  "name": "property",
+  "description": "property management user interface",
+  "author": {
+    "name": "John Juezan",
+    "email": "jmgjuezan@yahoo.com"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:sandbox": "env-cmd -f .env.sandbox next dev",
+    "build": "next build",
+    "build:sandbox": "env-cmd -f .env.sandbox next build",
+    "start": "next build && next start",
+    "start:sandbox": "npm run build:sandbox && env-cmd -f .env.sandbox next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.10",
+    "@heroicons/react": "^2.2.0",
+    "dayjs": "^1.11.21",
+    "next": "16.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "babel-plugin-react-compiler": "1.0.0",
+    "env-cmd": "^11.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4"
+  }
+}
