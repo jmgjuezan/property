@@ -1,19 +1,20 @@
-import dayjs from 'dayjs';
+import {
+  formatDate,
+  formatAmount,
+} from '@/lib/utility';
 import PaymentListMobile from './payment-list-mobile';
 import PaymentListDesktop from './payment-list-desktop';
 
 export default function PaymentList({ payments }) {
-  const withData = payments && payments.length > 0;
-  const paymentData = payments && payments.map((payment) => ({
+  const hasData = payments && payments.length > 0;
+  const paymentData = hasData && payments.map((payment) => ({
     ...payment,
-    paymentDate: dayjs(payment.paymentDate).format('MMMM DD, YYYY'),
-    amount: payment.amount.toLocaleString('en-US'),
+    paymentDate: formatDate(payment.paymentDate),
+    amount: formatAmount(payment.amount),
   }));
 
   return (<>
-    { withData ?
-
-      (<>
+    { hasData ? (<>
         <PaymentListMobile payments={paymentData} />
         <PaymentListDesktop payments={paymentData} />
       </>)

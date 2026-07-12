@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Nav, Footer } from "@/components";
+import AuthGuard from "@/components/auth-guard";
 
 export const metadata = {
   title: "Property Management",
@@ -12,7 +13,7 @@ export default function RootLayout({ children }) {
       <body className="flex min-h-screen flex-col">
         <Nav />
 
-        {children}
+        <AuthGuard>{children}</AuthGuard>
 
         <Footer />
       </body>

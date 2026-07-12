@@ -174,7 +174,22 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           paymentFor: "Rent",
           paidBy: "John Doe",
         },
-      ]
+      ],
+      exclusions: [
+        {
+          _id: "1",
+          name: "John Doe",
+          property: "The Tower 303 Test",
+          exclusionDate: "2026-05-28",
+        },
+        {
+          _id: "2",
+          name: "Jane Doe",
+          property: "Amaia T2 377 Test",
+          exclusionDateFrom: "2026-05-15",
+          exclusionDateTo: "2026-05-20",
+        },
+      ],
     }
   : null;
 
@@ -182,3 +197,4 @@ export const properties = mockStore?.properties ?? null;
 export const tenants = mockStore?.tenants ?? null;
 export const dues = mockStore?.dues ?? null;
 export const payments = mockStore?.payments ?? null;
+export const exclusions = mockStore?.exclusions ?? null;

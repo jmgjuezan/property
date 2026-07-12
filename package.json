@@ -9,11 +9,23 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev-tenant": "env-cmd -f .env.local-tenant next dev",
+    "dev:test": "env-cmd -f .env.test next dev",
+    "dev:test-tenant": "env-cmd -f .env.test-tenant next dev",
     "dev:sandbox": "env-cmd -f .env.sandbox next dev",
+    "dev:sandbox-tenant": "env-cmd -f .env.sandbox-tenant next dev",
     "build": "next build",
+    "build-tenant": "env-cmd -f .env.local-tenant next build",
+    "build:test": "env-cmd -f .env.test next build",
+    "build:test-tenant": "env-cmd -f .env.test-tenant next build",
     "build:sandbox": "env-cmd -f .env.sandbox next build",
+    "build:sandbox-tenant": "env-cmd -f .env.sandbox-tenant next build",
     "start": "next build && next start",
+    "start:tenant": "npm run build-tenant && env-cmd -f .env.local-tenant next start",
+    "start:test": "npm run build:test && env-cmd -f .env.test next start",
+    "start:test-tenant": "npm run build:test-tenant && env-cmd -f .env.test-tenant next start",
     "start:sandbox": "npm run build:sandbox && env-cmd -f .env.sandbox next start",
+    "start:sandbox-tenant": "npm run build:sandbox-tenant && env-cmd -f .env.sandbox-tenant next start",
     "lint": "eslint"
   },
   "dependencies": {

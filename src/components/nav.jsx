@@ -14,19 +14,23 @@ import {
   BellIcon,
   XMarkIcon
 } from "@heroicons/react/24/outline";
+import { getPageGroupVisibility, PAGE_GROUPS } from "@/lib/page-groups";
 
-const navigation = [
-  { name: 'Property', href: '/properties', current: false },
-  { name: 'Tenant', href: '/tenants', current: false },
-  { name: 'Due', href: '/dues', current: false },
-  { name: 'Payment', href: '/payments', current: false },
-]
+const navigation = Object.entries(PAGE_GROUPS).map(([key, group]) => ({
+  name: group.label,
+  href: group.path,
+  key,
+  current: false,
+}))
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Nav() {
+  const visibility = getPageGroupVisibility()
+  const visibleNavigation = navigation.filter((item) => visibility[item.key])
+
   return (<Disclosure
       as="nav"
       className="sticky top-0 z-50 w-full bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
@@ -57,7 +61,7 @@ export default function Nav() {
           </div>
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
-              {navigation.map((item) => (
+              {visibleNavigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -116,7 +120,7 @@ export default function Nav() {
 
     <DisclosurePanel className="sm:hidden">
       <div className="space-y-1 px-2 pt-2 pb-3">
-        {navigation.map((item) => (
+        {visibleNavigation.map((item) => (
           <Link href={item.href} key={item.name}>
             <DisclosureButton
               aria-current={item.current ? "page" : undefined}

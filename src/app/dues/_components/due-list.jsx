@@ -1,20 +1,24 @@
-import { DueListLeftItem, DueListRightItem } from ".";
+import {
+  formatDate,
+  formatAmount,
+} from '@/lib/utility';
+import DueListDesktop from "./due-list-desktop";
+import DueListMobile from "./due-list-mobile";
 
 export default function DueList({ dues }) {
-  return (
-    <ul role="list" className="divide-y divide-white/5">
-      {!dues || dues.length === 0 ? (
-        <div className="text-center">No due found.</div>
-      ) : (
-        dues.map((due) => (
-          <li key={due._id} className="flex justify-between pt-3">
-            <DueListLeftItem
-              due={due}
-            />
-            <DueListRightItem id={due._id} />
-          </li>
-        ))
-      )}
-    </ul>
-  );
+  const hasData = dues && dues.length > 0;
+  const duesData = hasData && dues.map((due) => ({
+    ...due,
+    dueDate: formatDate(due.dueDate),
+    totalAmount: formatAmount(due.totalAmount),
+  }));
+
+  return (<>
+    { hasData ? (<>
+      <DueListMobile dues={duesData} />
+      <DueListDesktop dues={duesData} />
+    </>) : (
+      <div className="text-center mb-10">No due found</div>
+    )}
+  </>);
 }

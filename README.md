@@ -22,7 +22,10 @@ You will need the following
 - [Git](https://git-scm.com/)
 - [Node](https://nodejs.org/en/download)
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- Tailwind CSS IntelliSense - VSCode Extension
+
+## VSCode Extensions
+
+- Tailwind CSS IntelliSense by Tailwind Labs
 
 ## About
 
@@ -41,12 +44,45 @@ Using SSH
 git clone git@github.com:jmgjuezan/property.git
 ```
 
+Follow the [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
 ## Getting Started
 
 First, run the development server:
 
+Run independently with mock data, as admin and without authentication:
+```
+npm run dev:sandbox
+```
+
+Run independently with mock data, as tenant and without authentication:
+```
+npm run dev:sandbox-tenant
+```
+
+Run connected to backend as admin and without authentication:
+```
+npm run dev:test
+```
+
+Run connected to backend as tenant and without authentication:
+```
+npm run dev:test-tenant
+```
+
+Run connected to backend as admin and with authentication:
 ```
 npm run dev
+```
+
+Run connected to backend as tenant and with authentication:
+```
+npm run dev-tenant
+```
+
+Run with production build:
+```
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

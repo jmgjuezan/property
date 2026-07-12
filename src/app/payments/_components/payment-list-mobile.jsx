@@ -2,9 +2,7 @@ export default function PaymentListMobile({
   payments,
 }) {
     
-  return (<div
-    className="sm:hidden flex flex-col items-center justify-center pb-5"
-  >
+  return (<div className="sm:hidden flex flex-col items-center justify-center pb-5">
     { payments.map((payment) => (
       <div
         key={ payment._id }
