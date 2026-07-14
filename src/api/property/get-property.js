@@ -1,5 +1,5 @@
-import { properties } from "@/lib/constants"
-import { PROPERTIES_URL } from "../urls"
+import { properties } from "@/lib/constants";
+import { PROPERTIES_URL } from "../urls";
 
 export default async function fetchProperty(id) {
   if (process.env.MOCK_ENABLED === "true") {

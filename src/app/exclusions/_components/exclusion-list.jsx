@@ -1,4 +1,4 @@
-import { formatDate } from '@/lib/utility';
+import { formatDate } from "@/lib/utility";
 import ExclusionListMobile from "./exclusion-list-mobile";
 import ExclusionListDesktop from "./exclusion-list-desktop";
 
@@ -13,8 +13,8 @@ export default function ExclusionList({ exclusions }) {
 
   return (<>
     { hasData ? (<>
-        <ExclusionListMobile exclusions={exclusionData} />
-        <ExclusionListDesktop exclusions={exclusionData} />
+      <ExclusionListMobile exclusions={ exclusionData } />
+      <ExclusionListDesktop exclusions={ exclusionData } />
     </>) : (
       <div className="text-center mb-10">No exclusion found</div>
     )}

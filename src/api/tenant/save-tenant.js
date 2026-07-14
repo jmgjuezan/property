@@ -1,9 +1,9 @@
-"use server"
+"use server";
 
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { tenants } from "@/lib/constants"
-import { TENANTS_URL } from "../urls"
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { tenants } from "@/lib/constants";
+import { TENANTS_URL } from "../urls";
 
 export default async function saveTenant(tenantFormData) {
   const tenant = Object.fromEntries(tenantFormData.entries());

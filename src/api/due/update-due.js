@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { dues } from "@/lib/constants";
+import { DUES_URL } from "../urls";
 
 export default async function updateDue(dueFormData) {
   const due = Object.fromEntries(dueFormData.entries());
@@ -21,7 +22,7 @@ export default async function updateDue(dueFormData) {
     }
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/dues/${due._id}`, {
+      await fetch(`${DUES_URL}/${due._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(due),

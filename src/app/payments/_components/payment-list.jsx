@@ -1,9 +1,9 @@
 import {
   formatDate,
   formatAmount,
-} from '@/lib/utility';
-import PaymentListMobile from './payment-list-mobile';
-import PaymentListDesktop from './payment-list-desktop';
+} from "@/lib/utility";
+import PaymentListMobile from "./payment-list-mobile";
+import PaymentListDesktop from "./payment-list-desktop";
 
 export default function PaymentList({ payments }) {
   const hasData = payments && payments.length > 0;

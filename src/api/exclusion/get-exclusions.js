@@ -1,4 +1,5 @@
 import { exclusions } from "@/lib/constants";
+import { EXCLUSIONS_URL } from "../urls";
 
 export default async function fetchExclusions() {
   if (process.env.MOCK_ENABLED === "true") {
@@ -6,7 +7,7 @@ export default async function fetchExclusions() {
   }
 
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/exclusions`, { cache: "no-store" });
+    const response = await fetch(`${EXCLUSIONS_URL}`, { cache: "no-store" });
     return response.ok ? await response.json() : [];
   } catch (err) {
     console.error(err);

@@ -1,5 +1,5 @@
-import { tenants } from "@/lib/constants"
-import { TENANTS_URL } from "../urls"
+import { tenants } from "@/lib/constants";
+import { TENANTS_URL } from "../urls";
 
 export default async function fetchTenants() {
   if (process.env.MOCK_ENABLED === "true") {

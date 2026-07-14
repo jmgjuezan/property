@@ -1,31 +1,32 @@
-import {
-  TenantListLeftItem,
-  TenantListRightItem,
-} from '.';
+import TenantListMobile from "./tenant-list-mobile";
+import TenantListDesktop from "./tenant-list-desktop";
 
-export default function TenantList({
-  tenants,
-}) {
+export default function TenantList({ tenants }) {
+  const hasData = tenants && tenants.length > 0;
+  const tenantData = hasData && tenants.map((tenant) => ({
+    name: formatName(tenant),
+    firstName: tenant.firstName,
+    middleName: tenant.middleName,
+    lastName: tenant.lastName,
+    _id: tenant._id,
+  }));
 
-  return (<ul role="list" className="divide-y divide-white/5">
-    { !tenants || tenants.length === 0 ?
-      <div className="text-center">
-        No tenant found.
-      </div>
-      : tenants.map((tenant) => (
-      <li
-        key={ tenant._id }
-        className="flex justify-between gap-x-6 py-5"
-      >
-        <TenantListLeftItem
-          firstName={tenant.firstName}
-          middleName={tenant.middleName}
-          lastName={tenant.lastName}
-        />
-        <TenantListRightItem
-          id={tenant._id}
-        />
-      </li>
-    ))}
-  </ul>);
+  function formatName(tenant) {
+    let middleName = " ";
+    
+    if (tenant.middleName && tenant.middleName.trim() !== "") {
+      middleName = ` ${tenant.middleName} `;
+    }
+
+    return `${tenant.firstName}${middleName}${tenant.lastName}`;
+  }
+
+  return (<>
+    { hasData ? (<>
+      <TenantListMobile tenants={ tenantData } />
+      <TenantListDesktop tenants={ tenantData } />
+    </>) : (
+      <div className="mb-10 text-center">No tenant found</div>
+    )}
+  </>);
 }

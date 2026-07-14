@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const canAdd = process.env.NEXT_PUBLIC_ENABLE_ADD_DUE === "true";
 

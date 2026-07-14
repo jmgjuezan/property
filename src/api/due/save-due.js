@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { dues } from "@/lib/constants";
+import { DUES_URL } from "../urls";
 
 export default async function saveDue(dueFormData) {
   const due = Object.fromEntries(dueFormData.entries());
@@ -16,7 +17,7 @@ export default async function saveDue(dueFormData) {
     dues.push(due);
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/dues`, {
+      await fetch(`${DUES_URL}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(due),

@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { exclusions } from "@/lib/constants";
+import { EXCLUSIONS_URL } from "../urls";
 
 export default async function updateExclusion(exclusionFormData) {
   const exclusion = Object.fromEntries(exclusionFormData.entries());
@@ -17,7 +18,7 @@ export default async function updateExclusion(exclusionFormData) {
     }
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/exclusions/${exclusion._id}`, {
+      await fetch(`${EXCLUSIONS_URL}/${exclusion._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(exclusion),

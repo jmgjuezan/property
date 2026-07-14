@@ -1,7 +1,7 @@
 import {
   PropertyListLeftItem,
   PropertyListRightItem,
-} from '.';
+} from ".";
 
 export default function PropertyList({
   properties,

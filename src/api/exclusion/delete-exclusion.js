@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { exclusions } from "@/lib/constants";
+import { EXCLUSIONS_URL } from "../urls";
 
 export default async function deleteExclusion(id) {
   if (process.env.MOCK_ENABLED === "true") {
@@ -11,7 +12,7 @@ export default async function deleteExclusion(id) {
     }
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/exclusions/${id}`, { method: "DELETE" });
+      await fetch(`${EXCLUSIONS_URL}/${id}`, { method: "DELETE" });
     } catch (err) {
       console.error(err);
     }

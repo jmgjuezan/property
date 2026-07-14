@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment } from "react";
 import Link from "next/link";
 
 const canPay = process.env.NEXT_PUBLIC_ENABLE_PAY_DUE === "true";

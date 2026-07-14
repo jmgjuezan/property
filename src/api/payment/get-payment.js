@@ -1,4 +1,5 @@
 import { payments } from "@/lib/constants";
+import { PAYMENTS_URL } from "../urls";
 
 export default async function fetchPayment(id) {
   if (process.env.MOCK_ENABLED === "true") {
@@ -6,7 +7,7 @@ export default async function fetchPayment(id) {
   }
 
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/payments/${id}`, { cache: "no-store" });
+    const response = await fetch(`${PAYMENTS_URL}/${id}`, { cache: "no-store" });
     const responseBody = await response.json();
     return responseBody.data;
   } catch (err) {

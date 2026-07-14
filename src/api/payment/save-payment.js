@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { payments } from "@/lib/constants";
+import { PAYMENTS_URL } from "../urls";
 
 export default async function savePayment(paymentFormData) {
   const payment = Object.fromEntries(paymentFormData.entries());
@@ -14,7 +15,7 @@ export default async function savePayment(paymentFormData) {
     payments.push(payment);
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/payments`, {
+      await fetch(`${PAYMENTS_URL}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payment),

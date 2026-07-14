@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState } from "react";
 import Link from "next/link";
 
 export default function ExclusionListDesktop({ exclusions }) {
-  const [sortKey, setSortKey] = useState('exclusionDate');
-  const [sortDirection, setSortDirection] = useState('asc');
+  const [sortKey, setSortKey] = useState("exclusionDate");
+  const [sortDirection, setSortDirection] = useState("asc");
 
   const sortedExclusions = useMemo(() => {
     if (!exclusions) {
@@ -13,15 +13,15 @@ export default function ExclusionListDesktop({ exclusions }) {
     }
 
     return [...exclusions].sort((a, b) => {
-      const valueA = String(a[sortKey] ?? '').toLowerCase();
-      const valueB = String(b[sortKey] ?? '').toLowerCase();
+      const valueA = String(a[sortKey] ?? "").toLowerCase();
+      const valueB = String(b[sortKey] ?? "").toLowerCase();
 
       if (valueA < valueB) {
-        return sortDirection === 'asc' ? -1 : 1;
+        return sortDirection === "asc" ? -1 : 1;
       }
 
       if (valueA > valueB) {
-        return sortDirection === 'asc' ? 1 : -1;
+        return sortDirection === "asc" ? 1 : -1;
       }
 
       return 0;
@@ -30,20 +30,20 @@ export default function ExclusionListDesktop({ exclusions }) {
 
   const handleSort = (key) => {
     if (sortKey === key) {
-      setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'));
+      setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
       return;
     }
 
     setSortKey(key);
-    setSortDirection('asc');
+    setSortDirection("asc");
   };
 
   const columns = [
-    { key: 'exclusionDate', label: 'Exclusion Date' },
-    { key: 'exclusionDateFrom', label: 'From' },
-    { key: 'exclusionDateTo', label: 'To' },
-    { key: 'name', label: 'Name' },
-    { key: 'property', label: 'Property' },
+    { key: "exclusionDate", label: "Exclusion Date" },
+    { key: "exclusionDateFrom", label: "From" },
+    { key: "exclusionDateTo", label: "To" },
+    { key: "name", label: "Name" },
+    { key: "property", label: "Property" },
   ];
 
   return (
@@ -74,7 +74,7 @@ export default function ExclusionListDesktop({ exclusions }) {
                 >
                   {column.label}
                   <span className="text-[10px] text-gray-400">
-                    {sortKey === column.key ? (sortDirection === 'asc' ? '▲' : '▼') : '◄►'}
+                    {sortKey === column.key ? (sortDirection === "asc" ? "▲" : "▼") : "◄►"}
                   </span>
                 </button>
               </th>

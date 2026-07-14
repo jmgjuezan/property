@@ -1,16 +1,16 @@
-"use server"
+"use server";
 
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { properties } from "@/lib/constants"
-import { PROPERTIES_URL } from "../urls"
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { properties } from "@/lib/constants";
+import { PROPERTIES_URL } from "../urls";
 
 export default async function updateProperty(propertyFormData) {
   const property = Object.fromEntries(propertyFormData.entries());
   const id = property._id;
 
   if (process.env.MOCK_ENABLED === "true") {
-    console.debug('Updating (mock) property:', property);
+    console.debug("Updating (mock) property:", property);
     const index = properties.findIndex(p => p._id === id);
 
     if (index < 0) { // Not found

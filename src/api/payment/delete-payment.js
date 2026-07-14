@@ -11,7 +11,7 @@ export default async function deletePayment(id) {
     }
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/payments/${id}`, { method: "DELETE" });
+      await fetch(`${PAYMENTS_URL}/${id}`, { method: "DELETE" });
     } catch (err) {
       console.error(err);
     }

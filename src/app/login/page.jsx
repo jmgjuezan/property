@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-const FACEBOOK_OAUTH_URL = 'https://www.facebook.com/v22.0/dialog/oauth'
+const FACEBOOK_OAUTH_URL = "https://www.facebook.com/v22.0/dialog/oauth"
 
 export default function Login() {
   const facebookAuthUrl = (() => {
@@ -14,8 +14,8 @@ export default function Login() {
     const params = new URLSearchParams({
       client_id: appId,
       redirect_uri: redirectUri,
-      response_type: 'code',
-      scope: 'email,public_profile',
+      response_type: "code",
+      scope: "email,public_profile",
     })
 
     return `${FACEBOOK_OAUTH_URL}?${params.toString()}`
@@ -24,7 +24,7 @@ export default function Login() {
   const handleFacebookLogin = () => {
     if (!facebookAuthUrl) {
       window.alert(
-        'Set FACEBOOK_APP_ID and FACEBOOK_REDIRECT_URI to enable Facebook login.'
+        "Set FACEBOOK_APP_ID and FACEBOOK_REDIRECT_URI to enable Facebook login."
       )
       return
     }

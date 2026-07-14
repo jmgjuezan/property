@@ -1,7 +1,7 @@
 import {
   formatDate,
   formatAmount,
-} from '@/lib/utility';
+} from "@/lib/utility";
 import DueListDesktop from "./due-list-desktop";
 import DueListMobile from "./due-list-mobile";
 

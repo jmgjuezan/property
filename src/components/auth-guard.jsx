@@ -8,9 +8,9 @@ const PUBLIC_PATHS = [];
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === "true";
 
 function isAuthenticated() {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === "undefined") return false;
 
-  const storedSession = window.localStorage.getItem('property_fb_session');
+  const storedSession = window.localStorage.getItem("property_fb_session");
 
   if (!storedSession) return false;
 
@@ -18,18 +18,18 @@ function isAuthenticated() {
     const session = JSON.parse(storedSession);
 
     if (!session?.token) {
-      window.localStorage.removeItem('property_fb_session');
+      window.localStorage.removeItem("property_fb_session");
       return false;
     }
 
     if (session.expiresAt && session.expiresAt <= Date.now()) {
-      window.localStorage.removeItem('property_fb_session');
+      window.localStorage.removeItem("property_fb_session");
       return false;
     }
 
     return true;
   } catch {
-    window.localStorage.removeItem('property_fb_session');
+    window.localStorage.removeItem("property_fb_session");
     return false;
   }
 }
@@ -57,10 +57,10 @@ export default function AuthGuard({ children }) {
 
     if (visibility[mainPath]) {
       if (!AUTH_ENABLED) return;
-      if (!isAuthenticated()) router.replace('/login');
+      if (!isAuthenticated()) router.replace("/login");
     }
 
-    AUTH_ENABLED ? router.replace('/login') : router.replace('/');
+    AUTH_ENABLED ? router.replace("/login") : router.replace("/");
   }, [pathname, router])
 
   return <>{children}</>

@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
   PropertyInformation,
   PropertyStatus
-} from '.';
+} from ".";
 
 export default function PropertyForm({
   property,

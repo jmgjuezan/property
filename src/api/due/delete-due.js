@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { dues } from "@/lib/constants";
+import { DUES_URL } from "../urls";
 
 export default async function deleteDue(id) {
   if (process.env.MOCK_ENABLED === "true") {
@@ -11,7 +12,7 @@ export default async function deleteDue(id) {
     }
   } else {
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/v1/dues/${id}`, { method: "DELETE" });
+      await fetch(`${DUES_URL}/${id}`, { method: "DELETE" });
     } catch (err) {
       console.error(err);
     }

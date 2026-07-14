@@ -1,16 +1,16 @@
-"use server"
+"use server";
 
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { tenants } from "@/lib/constants"
-import { TENANTS_URL } from "../urls"
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { tenants } from "@/lib/constants";
+import { TENANTS_URL } from "../urls";
 
 export default async function updateTenant(tenantFormData) {
   const tenant = Object.fromEntries(tenantFormData.entries());
   const id = tenant._id;
 
   if (process.env.MOCK_ENABLED === "true") {
-    console.debug('Updating (mock) tenant:', tenant);
+    console.debug("Updating (mock) tenant:", tenant);
     const index = tenants.findIndex(t => t._id === id);
 
     if (index < 0) { // Not found

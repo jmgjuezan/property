@@ -1,12 +1,12 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export function formatDate(value) {
-  if (!value) return '-';
+  if (!value) return "-";
   return dayjs(value).format("MMMM DD, YYYY");
 }
 
 export function formatAmount(value) {
-  return value.toLocaleString('en-US');
+  return value.toLocaleString("en-US");
 }
 
 export function sort(unsorted, sortKey, sortDirection) {

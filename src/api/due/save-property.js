@@ -1,9 +1,9 @@
-"use server"
+"use server";
 
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { properties } from "@/lib/constants"
-import { PROPERTIES_URL } from "../urls"
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { properties } from "@/lib/constants";
+import { PROPERTIES_URL } from "../urls";
 
 export default async function saveProperty(propertyFormData) {
   const property = Object.fromEntries(propertyFormData.entries());
