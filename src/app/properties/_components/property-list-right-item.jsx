@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { deleteProperty } from '@/api/property'
+import deleteProperty from '@/api/property/delete-property'
 
 const NO_ACQUIRED_DATE = "an unknown date";
 

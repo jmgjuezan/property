@@ -1,7 +1,5 @@
-import {
-  PropertyListLeftItem,
-  PropertyListRightItem,
-} from ".";
+import PropertyListLeftItem from "./property-list-left-item";
+import PropertyListRightItem from "./property-list-right-item";
 
 export default function PropertyList({
   properties,

@@ -1,5 +1,6 @@
-import { TenantForm } from "../_components";
-import { fetchTenant, updateTenant } from "@/api/tenant";
+import TenantForm from "../_components/tenant-form";
+import fetchTenant from "@/api/tenant/get-tenant";
+import updateTenant from "@/api/tenant/update-tenant";
 
 export default async function EditTenant({
   params,

@@ -1,5 +1,5 @@
-import { fetchExclusions } from "@/api/exclusion";
-import { ExclusionList } from "./_components";
+import fetchExclusions from "@/api/exclusion/get-exclusions";
+import ExclusionList from "./_components/exclusion-list";
 
 export const dynamic = "force-dynamic";
 

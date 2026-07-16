@@ -1,5 +1,6 @@
 import "./globals.css";
-import { Nav, Footer } from "@/components";
+import Nav from "@/components/nav";
+import Footer from "@/components/footer";
 import AuthGuard from "@/components/auth-guard";
 
 export const metadata = {

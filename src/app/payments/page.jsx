@@ -1,5 +1,5 @@
-import { fetchPayments } from "@/api/payment";
-import { PaymentList } from "./_components";
+import fetchPayments from "@/api/payment/get-payments";
+import PaymentList from "./_components/payment-list";
 
 export const dynamic = "force-dynamic";
 

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { deleteTenant } from "@/api/tenant";
+import deleteTenant from "@/api/tenant/delete-tenant";
 
 const COLUMNS = [
   { key: "name", label: "Name" },

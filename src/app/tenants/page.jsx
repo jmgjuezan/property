@@ -1,5 +1,5 @@
-import { fetchTenants } from "@/api/tenant";
-import { TenantList } from "./_components";
+import fetchTenants from "@/api/tenant/get-tenants";
+import TenantList from "./_components/tenant-list";
 
 export const dynamic = "force-dynamic";
 

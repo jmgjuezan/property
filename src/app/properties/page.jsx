@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { fetchProperties } from '@/api/property';
-import { PropertyList } from './_components';
+import fetchProperties from '@/api/property/get-properties';
+import PropertyList from './_components/property-list';
 
 export const dynamic = 'force-dynamic';
 

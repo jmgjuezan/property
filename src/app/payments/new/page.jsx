@@ -1,5 +1,5 @@
-import { PaymentForm } from "../_components";
-import { savePayment } from "@/api/payment";
+import PaymentForm from "../_components/payment-form";
+import savePayment from "@/api/payment/save-payment";
 
 export default function NewPayment() {
   const newPayment = {};

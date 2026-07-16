@@ -1,5 +1,5 @@
-import { TenantForm } from "../_components";
-import { saveTenant } from "@/api/tenant";
+import TenantForm from "../_components/tenant-form";
+import saveTenant from "@/api/tenant/save-tenant";
 
 export default function NewTenant() {
   const newTenant = {};

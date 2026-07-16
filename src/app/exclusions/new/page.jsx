@@ -1,5 +1,5 @@
-import { ExclusionForm } from "../_components";
-import { saveExclusion } from "@/api/exclusion";
+import ExclusionForm from "../_components/exclusion-form";
+import saveExclusion from "@/api/exclusion/save-exclusion";
 
 export default function NewExclusion() {
   const newExclusion = {};

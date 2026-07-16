@@ -1,5 +1,5 @@
-import { DueForm } from "../_components";
-import { saveDue } from "@/api/due";
+import DueForm from "../_components/due-form";
+import saveDue from "@/api/due/save-due";
 
 export default function NewDue() {
   const newDue = {};

@@ -1,5 +1,6 @@
-import { ExclusionForm } from "../../_components";
-import { fetchExclusion, updateExclusion } from "@/api/exclusion";
+import ExclusionForm from "../../_components/exclusion-form";
+import fetchExclusion from "@/api/exclusion/get-exclusion";
+import updateExclusion from "@/api/exclusion/update-exclusion";
 
 export default async function EditExclusion({ params }) {
   const { id } = await params;

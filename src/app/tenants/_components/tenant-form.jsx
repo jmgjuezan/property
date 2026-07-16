@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { fetchProperties } from "@/api/property";
+import fetchProperties from "@/api/property/get-properties";
 
 export default async function TenantForm({
   tenant,

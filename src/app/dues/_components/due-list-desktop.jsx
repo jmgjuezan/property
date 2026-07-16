@@ -3,10 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { sort } from "@/lib/utility";
-import {
-  DueListDesktopRent,
-  DueListDesktopUtility,
-} from ".";
+import DueListDesktopRent from "./due-list-desktop-rent";
+import DueListDesktopUtility from "./due-list-desktop-utility";
 
 const COLUMNS = [
   { key: "dueDate", label: "Due Date" },

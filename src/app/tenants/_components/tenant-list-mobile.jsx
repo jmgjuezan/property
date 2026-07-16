@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteTenant } from "@/api/tenant";
+import deleteTenant from "@/api/tenant/delete-tenant";
 
 export default function TenantListMobile({ tenants }) {
   return (<>

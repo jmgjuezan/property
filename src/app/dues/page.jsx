@@ -1,5 +1,5 @@
-import { fetchDues } from "@/api/due";
-import { DueList } from "./_components";
+import fetchDues from "@/api/due/get-dues";
+import DueList from "./_components/due-list";
 
 export const dynamic = "force-dynamic";
 

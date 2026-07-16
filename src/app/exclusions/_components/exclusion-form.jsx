@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { fetchProperties } from "@/api/property";
-import { fetchTenants } from "@/api/tenant";
+import fetchProperties from "@/api/property/get-properties";
+import fetchTenants from "@/api/tenant/get-tenants";
 
 export default async function ExclusionForm({ exclusion, action }) {
   const tenants = await fetchTenants();
