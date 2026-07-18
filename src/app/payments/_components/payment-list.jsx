@@ -5,6 +5,8 @@ import { formatDate, formatAmount, formatName } from "@/lib/utility";
 import PaymentListMobile from "./payment-list-mobile";
 import PaymentListDesktop from "./payment-list-desktop";
 
+const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_PAYMENT === "true";
+
 export default async function PaymentList({ payments }) {
   const hasData = payments && payments.length > 0;
   const properties = hasData ? await fetchProperties() : [];
@@ -26,14 +28,14 @@ export default async function PaymentList({ payments }) {
         <PaymentListMobile payments={paymentData} />
         <PaymentListDesktop payments={paymentData} />
       </>) : (<>
-      <div className="mb-5 flex items-center justify-center">
+      { ADD_ENABLED && (<div className="mb-5 flex items-center justify-center">
         <Link
           href="/payments/new"
           className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
         >
           Add
         </Link>
-      </div>
+      </div>)}
       <div className="mb-10 text-center">No payment found</div>
     </>)}
   </>);
