@@ -7,109 +7,77 @@ export default async function TenantForm({
 }) {
   const properties = await fetchProperties();
 
-  return (<form action={action} className="mx-75 my-5">
-    {tenant?._id && (
-      <input type="hidden" name="_id" value={tenant._id} />
-    )}
-    <div className="space-y-12">
-      <h2 className="text-base/7 font-semibold text-white">
-        Tenant Information
-      </h2>
-
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="firstName"
-            className="block text-sm/6 font-medium text-white after:content-['*'] after:ml-0.5 after:text-red-500"
-          >
-            First Name
-          </label>
-          <div className="mt-2">
-            <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+  return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
+    <form action={action}>
+      { tenant?._id && (
+        <input type="hidden" name="_id" value={tenant._id} />
+      )}
+      <div className="mt-6 border-t border-white/10">
+        <dl className="divide-y divide-white/10">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="flex items-center text-sm/6 font-medium text-gray-100 ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">
+              <label htmlFor="name">First Name</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
               <input
                 id="firstName"
                 name="firstName"
                 type="text"
-                defaultValue={tenant?.firstName}
+                defaultValue={tenant.firstName}
                 minLength={2}
                 maxLength={100}
-                placeholder="John"
                 autoComplete="off"
-                autoCapitalize="words"
-                autoFocus={true}
                 required={true}
-                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
-            </div>
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="middleName"
-            className="block text-sm/6 font-medium text-white"
-          >
-            Middle Name
-          </label>
-          <div className="mt-2">
-            <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="flex items-center text-sm/6 font-medium text-gray-100 ml-2">
+              <label htmlFor="middleName">Middle Name</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
               <input
                 id="middleName"
                 name="middleName"
                 type="text"
-                defaultValue={tenant?.middleName}
+                defaultValue={tenant.middleName}
                 minLength={2}
                 maxLength={100}
-                placeholder="Normal"
                 autoComplete="off"
-                autoCapitalize="words"
-                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
-            </div>
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="lastName"
-            className="block text-sm/6 font-medium text-white after:content-['*'] after:ml-0.5 after:text-red-500"
-          >
-            Last Name
-          </label>
-          <div className="mt-2">
-            <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="flex items-center text-sm/6 font-medium text-gray-100 ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">
+              <label htmlFor="lastName">Last Name</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
               <input
                 id="lastName"
                 name="lastName"
                 type="text"
-                defaultValue={tenant?.lastName}
+                defaultValue={tenant.lastName}
                 minLength={2}
                 maxLength={100}
-                placeholder="Doe"
                 autoComplete="off"
-                autoCapitalize="words"
                 required={true}
-                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
-            </div>
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="property"
-            className="block text-sm/6 font-medium text-white after:content-['*'] after:ml-0.5 after:text-red-500"
-          >
-            Property
-          </label>
-          <div className="mt-2">
-            <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="flex items-center text-sm/6 font-medium text-gray-100 ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">
+              <label htmlFor="property">Property</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
               <select
                 id="property"
                 name="property"
-                defaultValue={tenant?.property}
+                defaultValue={tenant.property}
                 required={true}
-                className="block w-full rounded-md py-1.5 text-base text-white focus:outline-none  sm:text-sm/6"
+                className="block w-full rounded-md bg-white/5 px-3 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               >
                 <option
                   value=""
@@ -117,95 +85,89 @@ export default async function TenantForm({
                 >
                   Select a property
                 </option>
-                {properties && properties.map((property) => (
+                {properties && properties.map((tenant) => (
                   <option
-                    key={property._id}
-                    value={property._id}
+                    key={tenant._id}
+                    value={tenant._id}
                     className="bg-black text-white"
                   >
-                    {property.name}
+                    {tenant.name}
                   </option>
                 ))}
               </select>
-            </div>
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="moveInDate"
-            className="block text-sm/6 font-medium text-white after:content-['*'] after:ml-0.5 after:text-red-500"
-          >
-            Move-in Date (Rent Due Date)
-          </label>
-          <div className="mt-2">
-            <input
-              id="moveInDate"
-              name="moveInDate"
-              type="date"
-              defaultValue={tenant?.moveInDate ?? new Date().toLocaleDateString('en-CA')}
-              autoComplete="off"
-              required={true}
-              className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 [&::-webkit-calendar-picker-indicator]:invert"
-            />
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
+              <label htmlFor="moveInDate">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                  Move-in Date
+                </span>
+                <br />
+                (Rent Due Date)
+              </label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2 flex items-center">
+              <input
+                id="moveInDate"
+                name="moveInDate"
+                type="date"
+                defaultValue={tenant.moveInDate}
+                required={true}
+                autoComplete="off"
+                className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 [&::-webkit-calendar-picker-indicator]:invert"
+              />
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-4">
-          <label
-            htmlFor="paymentDate"
-            className="block text-sm/6 font-medium text-white"
-          >
-            Payment Date (Preferred Rent Due Date)
-          </label>
-          <div className="mt-2">
-            <input
-              id="paymentDate"
-              name="paymentDate"
-              type="date"
-              defaultValue={tenant?.paymentDate}
-              autoComplete="off"
-              className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 [&::-webkit-calendar-picker-indicator]:invert"
-            />
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
+              <label htmlFor="paymentDate">Payment Date<br />(Preferred Rent Due Date)</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2 flex items-center">
+              <input
+                id="paymentDate"
+                name="paymentDate"
+                type="date"
+                defaultValue={tenant.paymentDate}
+                autoComplete="off"
+                className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 [&::-webkit-calendar-picker-indicator]:invert"
+              />
+            </dd>
           </div>
-        </div>
-
-        <div className="sm:col-span-3">
-          <label
-            htmlFor="rentAmount"
-            className="block text-sm/6 font-medium text-white after:content-['*'] after:ml-0.5 after:text-red-500"
-          >
-            Rent Amount
-          </label>
-          <div className="mt-2">
-            <input
-              id="rentAmount"
-              name="rentAmount"
-              type="number"
-              defaultValue={tenant?.rentAmount ?? 0}
-              min={1}
-              step={1}
-              autoComplete="off"
-              className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-            />
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="flex items-center text-sm/6 font-medium text-gray-100 ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">
+              <label htmlFor="rentAmount">Rent Amount</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
+              <input
+                id="rentAmount"
+                name="rentAmount"
+                type="number"
+                defaultValue={tenant.rentAmount}
+                min={1}
+                step={1}
+                required={true}
+                autoComplete="off"
+                className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+              />
+            </dd>
           </div>
-        </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2"></dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 text-right ml-2">
+              <Link href="/tenants" className="text-sm/6 font-semibold text-white mr-4">
+                Back
+              </Link>
+              <button
+                type="submit"
+                className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer"
+              >
+                Save
+              </button>
+            </dd>
+          </div>
+        </dl>
       </div>
-    </div>
-
-    <div className="mt-6 flex items-center justify-end gap-x-6">
-      <Link
-        href="/tenants"
-        className="text-sm/6 font-semibold text-white"
-      >
-        Back
-      </Link>
-      <button
-        type="submit"
-        className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer"
-      >
-        Save
-      </button>
-    </div>
-  </form>)
+    </form>
+  </div>);
 }

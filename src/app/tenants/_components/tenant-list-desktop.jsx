@@ -16,7 +16,7 @@ export default function TenantListDesktop({ tenants }) {
 
   const sortedTenants = useMemo(() => {
     if (!tenants) return [];
-    return sort(dues, sortKey, sortDirection);
+    return sort(tenants, sortKey, sortDirection);
   }, [tenants, sortKey, sortDirection]);
 
   const handleSort = (key) => {

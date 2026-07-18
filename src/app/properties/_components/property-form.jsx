@@ -13,7 +13,7 @@ export default function PropertyForm({
       <div className="mt-6 border-t border-white/10">
         <dl className="divide-y divide-white/10">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm/6 font-medium text-gray-100 ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center after:content-['*'] after:ml-0.5 after:text-red-500">
               <label htmlFor="name">Name</label>
             </dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
@@ -31,7 +31,7 @@ export default function PropertyForm({
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm/6 font-medium text-gray-100 ml-2">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
               <label htmlFor="address">Address</label>
             </dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
@@ -48,7 +48,7 @@ export default function PropertyForm({
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm/6 font-medium text-gray-100 ml-2">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
               <label htmlFor="maxTenant">Max Tenant</label>
             </dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
@@ -65,7 +65,7 @@ export default function PropertyForm({
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm/6 font-medium text-gray-100 ml-2">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
               <label htmlFor="acquiredDate">Acquired Date</label>
             </dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">

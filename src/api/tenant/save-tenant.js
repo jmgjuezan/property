@@ -25,6 +25,7 @@ export default async function saveTenant(tenantFormData) {
       });
     } catch (err) {
       console.error(err);
+      console.log(tenant);
     }
   }
 
