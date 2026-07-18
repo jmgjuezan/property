@@ -3,12 +3,11 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { payments } from "@/lib/constants";
+import { formatRequest } from "@/lib/utility";
 import { PAYMENTS_URL } from "../urls";
 
 export default async function savePayment(paymentFormData) {
-  const payment = Object.fromEntries(paymentFormData.entries());
-
-  payment.amount = Number(payment.amount || 0);
+  const payment = formatRequest(paymentFormData);
 
   if (process.env.MOCK_ENABLED === "true") {
     payment._id = String(Math.floor(Math.random() * 100000));
@@ -22,6 +21,7 @@ export default async function savePayment(paymentFormData) {
       });
     } catch (err) {
       console.error(err);
+      console.debug(payment);
     }
   }
 

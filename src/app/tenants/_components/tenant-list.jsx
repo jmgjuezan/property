@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatName } from "@/lib/utility";
 import TenantListMobile from "./tenant-list-mobile";
 import TenantListDesktop from "./tenant-list-desktop";
 
@@ -11,16 +12,6 @@ export default function TenantList({ tenants }) {
     lastName: tenant.lastName,
     _id: tenant._id,
   }));
-
-  function formatName(tenant) {
-    let middleName = " ";
-    
-    if (tenant.middleName && tenant.middleName.trim() !== "") {
-      middleName = ` ${tenant.middleName} `;
-    }
-
-    return `${tenant.firstName}${middleName}${tenant.lastName}`;
-  }
 
   return (<>
     { hasData ? (<>

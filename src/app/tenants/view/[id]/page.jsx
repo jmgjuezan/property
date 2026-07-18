@@ -4,10 +4,10 @@ import fetchTenant from "@/api/tenant/get-tenant";
 import { formatAmount, formatDate } from "@/lib/utility";
 
 export default async function TenantForm({ params }) {
-  const properties = await fetchProperties();
   const { id } = await params;
-  const tenant = await fetchTenant(id);
-  const property = properties.find(property => property._id === tenant.property);
+  const tenant = id ? await fetchTenant(id) : {};
+  const properties = tenant ? await fetchProperties() : [];
+  const property = tenant && properties && properties.find(property => property._id === tenant.property);
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <div className="mt-6 border-t border-white/10">

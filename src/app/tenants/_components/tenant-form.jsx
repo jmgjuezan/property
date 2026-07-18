@@ -1,10 +1,7 @@
 import Link from "next/link";
 import fetchProperties from "@/api/property/get-properties";
 
-export default async function TenantForm({
-  tenant,
-  action,
-}) {
+export default async function TenantForm({ tenant, action }) {
   const properties = await fetchProperties();
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
@@ -85,13 +82,13 @@ export default async function TenantForm({
                 >
                   Select a property
                 </option>
-                {properties && properties.map((tenant) => (
+                {properties && properties.map((property) => (
                   <option
-                    key={tenant._id}
-                    value={tenant._id}
+                    key={property._id}
+                    value={property._id}
                     className="bg-black text-white"
                   >
-                    {tenant.name}
+                    {property.name}
                   </option>
                 ))}
               </select>
@@ -152,6 +149,7 @@ export default async function TenantForm({
               />
             </dd>
           </div>
+
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm/6 font-medium text-gray-100 ml-2"></dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 text-right ml-2">

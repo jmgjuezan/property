@@ -5,10 +5,18 @@ import Link from "next/link";
 import deleteTenant from "@/api/tenant/delete-tenant";
 import { sort } from "@/lib/utility";
 
+const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_TENANT === "true";
+const VIEW_ENABLED = process.env.NEXT_PUBLIC_ENABLE_VIEW_TENANT === "true";
+const EDIT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_EDIT_TENANT === "true";
+const DELETE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DELETE_TENANT === "true";
+
 const COLUMNS = [
   { key: "name", label: "Name" },
-  { key: "actions", label: "" },
 ];
+
+if (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) {
+  COLUMNS.push({ key: "actions", label: "" });
+}
 
 export default function TenantListDesktop({ tenants }) {
   const [sortKey, setSortKey] = useState("name");
@@ -32,7 +40,7 @@ export default function TenantListDesktop({ tenants }) {
   return (<div className="mb-5 hidden sm:block">
     <table className="mx-auto table-auto">
       <thead>
-        <tr>
+        { ADD_ENABLED && (<tr>
           <td colSpan={COLUMNS.length} align="right" className="pb-5">
             <Link
               href="/tenants/new"
@@ -41,11 +49,11 @@ export default function TenantListDesktop({ tenants }) {
               Add
             </Link>
           </td>
-        </tr>
+        </tr>)}
         <tr>
           { COLUMNS.map((column) => (
             <th key={column.key} className="bg-gray-800 p-5 text-xs md:text-base">
-              {column.key === "actions" ? (
+              { column.key === "actions" ? (
                 <span className="flex items-center gap-1 font-semibold">{column.label}</span>
               ) : (
                 <button
@@ -69,21 +77,21 @@ export default function TenantListDesktop({ tenants }) {
             <td className="p-5 text-xs md:text-base">
               {tenant.name}
             </td>
-            <td className="p-5 text-xs md:text-base">
+            { VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED && (<td className="p-5 text-xs md:text-base">
               <div className="flex gap-2">
-                <Link
+                { VIEW_ENABLED && (<Link
                   href={`/tenants/view/${tenant._id}`}
                   className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
                 >
                   View
-                </Link>
-                <Link
+                </Link>)}
+                { EDIT_ENABLED && (<Link
                   href={`/tenants/edit/${tenant._id}`}
                   className="rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white"
                 >
                   Edit
-                </Link>
-                <form action={deleteTenant}>
+                </Link>)}
+                { DELETE_ENABLED && (<form action={deleteTenant}>
                   <input type="hidden" name="_id" value={tenant._id} />
                   <button
                     type="submit"
@@ -91,9 +99,9 @@ export default function TenantListDesktop({ tenants }) {
                   >
                     Delete
                   </button>
-                </form>
+                </form>)}
               </div>
-            </td>
+            </td>)}
           </tr>
         ))}
       </tbody>

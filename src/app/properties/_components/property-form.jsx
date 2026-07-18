@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-export default function PropertyForm({
-  property,
-  action,
-}) {
+export default function PropertyForm({ property, action }) {
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <form action={action}>
@@ -102,6 +99,7 @@ export default function PropertyForm({
               </label>
             </dd>
           </div>
+
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm/6 font-medium text-gray-100 ml-2"></dt>
             <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 text-right ml-2">

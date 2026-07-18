@@ -19,6 +19,16 @@ export function formatAmount(value) {
   return value.toLocaleString("en-US");
 }
 
+export function formatName(person) {
+  let middleName = " ";
+  
+  if (person.middleName && person.middleName.trim() !== "") {
+    middleName = ` ${person.middleName} `;
+  }
+
+  return `${person.firstName}${middleName}${person.lastName}`;
+}
+
 export function sort(unsorted, sortKey, sortDirection) {
   const sorted = [...unsorted].sort((a, b) => {
     const isNumeric = sortKey === "amount" || sortKey === "totalAmount";

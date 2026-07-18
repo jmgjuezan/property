@@ -1,6 +1,4 @@
-export default function PaymentListMobile({
-  payments,
-}) {
+export default function PaymentListMobile({ payments, properties, tenants }) {
     
   return (<div className="sm:hidden flex flex-col items-center justify-center pb-5">
     { payments.map((payment) => (
