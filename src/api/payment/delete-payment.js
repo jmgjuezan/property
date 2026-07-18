@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { payments } from "@/lib/constants";
+import { PAYMENTS_URL } from "../urls";
 
 export default async function deletePayment(id) {
   if (process.env.MOCK_ENABLED === "true") {

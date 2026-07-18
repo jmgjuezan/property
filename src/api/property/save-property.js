@@ -3,10 +3,11 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { properties } from "@/lib/constants";
+import { formatRequest } from "@/lib/utility";
 import { PROPERTIES_URL } from "../urls";
 
 export default async function saveProperty(propertyFormData) {
-  const property = Object.fromEntries(propertyFormData.entries());
+  const property = formatRequest(propertyFormData);
 
   if (process.env.MOCK_ENABLED === "true") {
     console.debug(property);
@@ -24,6 +25,7 @@ export default async function saveProperty(propertyFormData) {
       });
     } catch (err) {
       console.error(err);
+      console.debug(property);
     }
   }
 

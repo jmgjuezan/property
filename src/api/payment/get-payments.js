@@ -1,4 +1,5 @@
 import { payments } from "@/lib/constants";
+import { PAYMENTS_URL } from "../urls";
 
 export default async function fetchPayments() {
   if (process.env.MOCK_ENABLED === "true") {

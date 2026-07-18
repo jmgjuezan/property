@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import deleteTenant from "@/api/tenant/delete-tenant";
+import deleteProperty from "@/api/property/delete-property";
 import { sort } from "@/lib/utility";
 
 const COLUMNS = [
@@ -10,19 +10,19 @@ const COLUMNS = [
   { key: "actions", label: "" },
 ];
 
-export default function TenantListDesktop({ tenants }) {
+export default function PropertyListDesktop({ properties }) {
   const [sortKey, setSortKey] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 
-  const sortedTenants = useMemo(() => {
-    if (!tenants) return [];
-    return sort(dues, sortKey, sortDirection);
-  }, [tenants, sortKey, sortDirection]);
+  const sortedProperties = useMemo(() => {
+    if (!properties) return [];
+    return sort(properties, sortKey, sortDirection);
+  }, [properties, sortKey, sortDirection]);
 
   const handleSort = (key) => {
     if (sortKey === key) {
-      setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
-      return;
+    setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+    return;
     }
 
     setSortKey(key);
@@ -35,7 +35,7 @@ export default function TenantListDesktop({ tenants }) {
         <tr>
           <td colSpan={COLUMNS.length} align="right" className="pb-5">
             <Link
-              href="/tenants/new"
+              href="/properties/new"
               className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
             >
               Add
@@ -64,27 +64,27 @@ export default function TenantListDesktop({ tenants }) {
         </tr>
       </thead>
       <tbody>
-        {sortedTenants.map((tenant) => (
-          <tr key={tenant._id} className="border-t border-solid border-gray-800">
+        {sortedProperties.map((property) => (
+          <tr key={property._id} className="border-t border-solid border-gray-800">
             <td className="p-5 text-xs md:text-base">
-              {tenant.name}
+              {property.name}
             </td>
             <td className="p-5 text-xs md:text-base">
               <div className="flex gap-2">
                 <Link
-                  href={`/tenants/view/${tenant._id}`}
+                  href={`/properties/view/${property._id}`}
                   className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
                 >
                   View
                 </Link>
                 <Link
-                  href={`/tenants/edit/${tenant._id}`}
+                  href={`/properties/edit/${property._id}`}
                   className="rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white"
                 >
                   Edit
                 </Link>
-                <form action={deleteTenant}>
-                  <input type="hidden" name="_id" value={tenant._id} />
+                <form action={deleteProperty}>
+                  <input type="hidden" name="_id" value={property._id} />
                   <button
                     type="submit"
                     className="cursor-pointer rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white"

@@ -3,9 +3,7 @@ import fetchProperties from "@/api/property/get-properties";
 import fetchTenant from "@/api/tenant/get-tenant";
 import { formatAmount, formatDate } from "@/lib/utility";
 
-export default async function TenantForm({
-  params,
-}) {
+export default async function TenantForm({ params }) {
   const properties = await fetchProperties();
   const { id } = await params;
   const tenant = await fetchTenant(id);

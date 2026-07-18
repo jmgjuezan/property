@@ -1,33 +1,25 @@
-import PropertyListLeftItem from "./property-list-left-item";
-import PropertyListRightItem from "./property-list-right-item";
+import Link from "next/link";
+import PropertyListMobile from "./property-list-mobile";
+import PropertyListDesktop from "./property-list-desktop";
 
-export default function PropertyList({
-  properties,
-}) {
+export default function PropertyList({ properties }) {
+  const hasData = properties && properties.length > 0;
+  const propertyData = hasData && properties;
 
-  return (<ul role="list" className="divide-y divide-white/5">
-    { !properties || properties.length === 0 ?
-      <div className="text-center">
-        No property found.
+  return (<>
+    { hasData ? (<>
+      <PropertyListMobile properties={ propertyData } />
+      <PropertyListDesktop properties={ propertyData } />
+    </>) : (<>
+      <div className="mb-5 flex items-center justify-center">
+        <Link
+          href="/properties/new"
+          className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
+        >
+          Add
+        </Link>
       </div>
-      : properties.map((property) => (
-      <li
-        key={ property._id }
-        className="flex justify-between gap-x-6 py-5"
-      >
-        <PropertyListLeftItem
-          name={property.name}
-          logo={property.logo}
-          address={property.address}
-        />
-        <PropertyListRightItem
-          id={property._id}
-          currentTenant={property.currentTenant}
-          maxTenant={property.maxTenant}
-          standBy={property.standBy}
-          acquiredDate={property.acquiredDate}
-        />
-      </li>
-    ))}
-  </ul>);
+      <div className="mb-10 text-center">No property found</div>
+    </>)}
+  </>);
 }
