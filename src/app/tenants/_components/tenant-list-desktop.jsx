@@ -42,70 +42,74 @@ export default function TenantListDesktop({ tenants }) {
     setSortDirection("asc");
   };
 
-  return (
-    <div className="mb-5 hidden sm:block">
-      <table className="mx-auto table-auto">
-        <thead>
-          <tr>
-            <td colSpan={COLUMNS.length} align="right" className="pb-5">
-              <Link
-                href="/tenants/new"
-                className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
-              >
-                Add Tenant
-              </Link>
+  return (<div className="mb-5 hidden sm:block">
+    <table className="mx-auto table-auto">
+      <thead>
+        <tr>
+          <td colSpan={COLUMNS.length} align="right" className="pb-5">
+            <Link
+              href="/tenants/new"
+              className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
+            >
+              Add
+            </Link>
+          </td>
+        </tr>
+        <tr>
+          { COLUMNS.map((column) => (
+            <th key={column.key} className="bg-gray-800 p-5 text-xs md:text-base">
+              {column.key === "actions" ? (
+                <span className="flex items-center gap-1 font-semibold">{column.label}</span>
+              ) : (
+                <button
+                  type="button"
+                  className="flex items-center gap-1 font-semibold"
+                  onClick={() => handleSort(column.key)}
+                >
+                  {column.label}
+                  <span className="text-[10px] text-gray-400">
+                    {sortKey === column.key ? (sortDirection === "asc" ? "▲" : "▼") : "◄►"}
+                  </span>
+                </button>
+              )}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {sortedTenants.map((tenant) => (
+          <tr key={tenant._id} className="border-t border-solid border-gray-800">
+            <td className="p-5 text-xs md:text-base">
+              {tenant.name}
+            </td>
+            <td className="p-5 text-xs md:text-base">
+              <div className="flex gap-2">
+                <Link
+                  href={`/tenants/view/${tenant._id}`}
+                  className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
+                >
+                  View
+                </Link>
+                <Link
+                  href={`/tenants/edit/${tenant._id}`}
+                  className="rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white"
+                >
+                  Edit
+                </Link>
+                <form action={deleteTenant}>
+                  <input type="hidden" name="_id" value={tenant._id} />
+                  <button
+                    type="submit"
+                    className="cursor-pointer rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </div>
             </td>
           </tr>
-          <tr>
-            { COLUMNS.map((column) => (
-              <th key={column.key} className="bg-gray-800 p-5 text-xs md:text-base">
-                {column.key === "actions" ? (
-                  <span className="flex items-center gap-1 font-semibold">{column.label}</span>
-                ) : (
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 font-semibold"
-                    onClick={() => handleSort(column.key)}
-                  >
-                    {column.label}
-                    <span className="text-[10px] text-gray-400">
-                      {sortKey === column.key ? (sortDirection === "asc" ? "▲" : "▼") : "◄►"}
-                    </span>
-                  </button>
-                )}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {sortedTenants.map((tenant) => (
-            <tr key={tenant._id} className="border-t border-solid border-gray-800">
-              <td className="p-5 text-xs md:text-base">
-                {tenant.name}
-              </td>
-              <td className="p-5 text-xs md:text-base">
-                <div className="flex gap-2">
-                  <Link
-                    href={`/tenants/edit/${tenant._id}`}
-                    className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
-                  >
-                    Edit
-                  </Link>
-                  <form action={deleteTenant}>
-                    <input type="hidden" name="_id" value={tenant._id} />
-                    <button
-                      type="submit"
-                      className="cursor-pointer rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white"
-                    >
-                      Delete
-                    </button>
-                  </form>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+        ))}
+      </tbody>
+    </table>
+  </div>);
 }

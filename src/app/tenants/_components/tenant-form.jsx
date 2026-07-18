@@ -38,7 +38,7 @@ export default async function TenantForm({
                 autoCapitalize="words"
                 autoFocus={true}
                 required={true}
-                className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
               />
             </div>
           </div>
@@ -63,7 +63,7 @@ export default async function TenantForm({
                 placeholder="Normal"
                 autoComplete="off"
                 autoCapitalize="words"
-                className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
               />
             </div>
           </div>
@@ -89,7 +89,7 @@ export default async function TenantForm({
                 autoComplete="off"
                 autoCapitalize="words"
                 required={true}
-                className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                className="capitalize block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
               />
             </div>
           </div>
@@ -115,12 +115,12 @@ export default async function TenantForm({
                   value=""
                   className="bg-black text-white"
                 >
-                  Select property
+                  Select a property
                 </option>
                 {properties && properties.map((property) => (
                   <option
                     key={property._id}
-                    value={property.name}
+                    value={property._id}
                     className="bg-black text-white"
                   >
                     {property.name}
@@ -156,7 +156,7 @@ export default async function TenantForm({
             htmlFor="paymentDate"
             className="block text-sm/6 font-medium text-white"
           >
-            Payment Date (Change Rent Due Date from Move-in Date)
+            Payment Date (Preferred Rent Due Date)
           </label>
           <div className="mt-2">
             <input

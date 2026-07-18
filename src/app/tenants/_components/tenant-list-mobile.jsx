@@ -8,7 +8,7 @@ export default function TenantListMobile({ tenants }) {
         href="/tenants/new"
         className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
       >
-        Add Tenant
+        Add
       </Link>
     </div>
     <div className="flex flex-col items-center justify-center pb-5 sm:hidden">
@@ -22,8 +22,14 @@ export default function TenantListMobile({ tenants }) {
           </p>
           <div className="mt-4 flex gap-2">
             <Link
-              href={`/tenants/edit/${tenant._id}`}
+              href={`/tenants/view/${tenant._id}`}
               className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
+            >
+              View
+            </Link>
+            <Link
+              href={`/tenants/edit/${tenant._id}`}
+              className="rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white"
             >
               Edit
             </Link>

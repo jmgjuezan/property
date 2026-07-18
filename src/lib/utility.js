@@ -1,5 +1,15 @@
 import dayjs from "dayjs";
 
+export function formatRequest(formData) {
+  const data = Object.fromEntries(formData.entries());
+  for (let key in data) {
+    if (data[key] === "" || data[key] === null || data[key] === undefined) {
+      delete data[key];
+    }
+  }
+  return data;
+}
+
 export function formatDate(value) {
   if (!value) return "-";
   return dayjs(value).format("MMMM DD, YYYY");

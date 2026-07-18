@@ -3,10 +3,11 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { tenants } from "@/lib/constants";
+import { formatRequest } from "@/lib/utility";
 import { TENANTS_URL } from "../urls";
 
 export default async function saveTenant(tenantFormData) {
-  const tenant = Object.fromEntries(tenantFormData.entries());
+  const tenant = formatRequest(tenantFormData);
 
   if (process.env.MOCK_ENABLED === "true") {
     console.debug(tenant);
