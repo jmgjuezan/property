@@ -1,3 +1,5 @@
 export default function Loading() {
-  return <div className="text-center text-white">Loading dues...</div>;
+  return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
+    Loading due page...
+  </div>);
 }
