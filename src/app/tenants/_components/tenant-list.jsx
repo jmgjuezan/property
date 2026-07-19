@@ -3,7 +3,7 @@ import { formatName } from "@/lib/utility";
 import TenantListMobile from "./tenant-list-mobile";
 import TenantListDesktop from "./tenant-list-desktop";
 
-const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_TENANT === "true";
+const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_EXCLUSION === "true";
 
 export default function TenantList({ tenants }) {
   const hasData = tenants && tenants.length > 0;

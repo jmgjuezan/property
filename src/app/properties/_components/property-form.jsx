@@ -4,9 +4,7 @@ export default function PropertyForm({ property, action }) {
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <form action={action}>
-      { property?._id && (
-        <input type="hidden" name="_id" value={property._id} />
-      )}
+      { property?._id && (<input type="hidden" name="_id" value={property._id} /> )}
       <div className="mt-6 border-t border-white/10">
         <dl className="divide-y divide-white/10">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

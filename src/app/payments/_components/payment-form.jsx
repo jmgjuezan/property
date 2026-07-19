@@ -47,7 +47,7 @@ export default async function PaymentForm({ payment, action }) {
                 type="number"
                 defaultValue={payment.amount}
                 min={1}
-                step={1}
+                step={0.1}
                 required={true}
                 autoComplete="off"
                 className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"

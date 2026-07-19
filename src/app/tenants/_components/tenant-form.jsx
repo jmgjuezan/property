@@ -6,9 +6,7 @@ export default async function TenantForm({ tenant, action }) {
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <form action={action}>
-      { tenant?._id && (
-        <input type="hidden" name="_id" value={tenant._id} />
-      )}
+      { tenant?._id && (<input type="hidden" name="_id" value={tenant._id} /> )}
       <div className="mt-6 border-t border-white/10">
         <dl className="divide-y divide-white/10">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

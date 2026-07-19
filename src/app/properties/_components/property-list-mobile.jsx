@@ -25,7 +25,7 @@ export default function PropertyListMobile({ properties }) {
           <p className="text-sm/6 font-semibold text-white">
             {tenant.name}
           </p>
-          { VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED && (<div className="mt-4 flex gap-2">
+          { (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) && (<div className="mt-4 flex gap-2">
             { VIEW_ENABLED && (<Link
               href={`/tenants/view/${tenant._id}`}
               className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"

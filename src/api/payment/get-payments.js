@@ -7,7 +7,7 @@ export default async function fetchPayments() {
   }
 
   try {
-    const response = await fetch(`${PAYMENTS_URL}`, { cache: "no-store" });
+    const response = await fetch(PAYMENTS_URL, { cache: "no-store" });
     const responseBody = await response.json();
     return responseBody.data;
   } catch (err) {

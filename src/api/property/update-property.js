@@ -29,9 +29,7 @@ export default async function updateProperty(propertyFormData) {
       const url = `${PROPERTIES_URL}/${id}`;
       await fetch(url, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(property),
       });
     } catch (err) {

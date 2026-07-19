@@ -18,10 +18,8 @@ export default async function saveProperty(propertyFormData) {
     try {
       await fetch(PROPERTIES_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(property),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(property),
       });
     } catch (err) {
       console.error(err);

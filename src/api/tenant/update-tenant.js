@@ -29,9 +29,7 @@ export default async function updateTenant(tenantFormData) {
       const url = `${TENANTS_URL}/${id}`;
       await fetch(url, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(tenant),
       });
     } catch (err) {

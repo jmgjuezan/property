@@ -77,7 +77,7 @@ export default function PropertyListDesktop({ properties }) {
             <td className="p-5 text-xs md:text-base">
               {property.name}
             </td>
-            { VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED && (<td className="p-5 text-xs md:text-base">
+            { (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) && (<td className="p-5 text-xs md:text-base">
               <div className="flex gap-2">
                 { VIEW_ENABLED && (<Link
                   href={`/properties/view/${property._id}`}

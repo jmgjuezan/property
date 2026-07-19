@@ -10,13 +10,19 @@ export default async function updatePayment(paymentFormData) {
   const payment = formatRequest(paymentFormData);
 
   if (process.env.MOCK_ENABLED === "true") {
-    const existingIndex = payments.findIndex((item) => item._id === payment._id);
-    if (existingIndex >= 0) {
-      payments[existingIndex] = { ...payments[existingIndex], ...payment };
-    } else {
-      payment._id = String(Math.floor(Math.random() * 100000));
-      payments.push(payment);
+    console.debug("Updating (mock) property:", payment);
+    const index = payments.findIndex(p => p._id === id);
+
+    if (index < 0) { // Not found
+      redirect("/payments");
     }
+
+    payments[index] = {
+      ...payments[index],
+      ...payment,
+    };
+    
+    console.debug(payments);
   } else {
     try {
       await fetch(`${PAYMENTS_URL}/${payment._id}`, {

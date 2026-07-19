@@ -20,13 +20,7 @@ export function formatAmount(value) {
 }
 
 export function formatName(person) {
-  let middleName = " ";
-  
-  if (person.middleName && person.middleName.trim() !== "") {
-    middleName = ` ${person.middleName} `;
-  }
-
-  return `${person.firstName}${middleName}${person.lastName}`;
+  return `${person.firstName} ${person.lastName}`;
 }
 
 export function sort(unsorted, sortKey, sortDirection) {
@@ -38,6 +32,12 @@ export function sort(unsorted, sortKey, sortDirection) {
       const aValue = parseInt(a[sortKey]);
       const bValue = parseInt(b[sortKey]);
       return sortDirection === "desc" ? aValue - bValue : bValue - aValue
+    }
+
+    if (sortKey === "exclusionDate") {
+      const aDate = new Date(a[sortKey] === "-" ? a[`${sortKey}From`] : a[sortKey]);
+      const bDate = new Date(b[sortKey] === "-" ? b[`${sortKey}From`] : b[sortKey]);
+      return sortDirection === "asc" ? aDate - bDate : bDate - aDate
     }
 
     if (isDate) {

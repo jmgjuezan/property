@@ -18,10 +18,8 @@ export default async function saveTenant(tenantFormData) {
     try {
       await fetch(TENANTS_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(tenant),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tenant),
       });
     } catch (err) {
       console.error(err);
