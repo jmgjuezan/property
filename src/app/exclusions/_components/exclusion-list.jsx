@@ -11,7 +11,7 @@ export default async function ExclusionList({ exclusions }) {
   const hasData = exclusions && exclusions.length > 0;
   const properties = hasData ? await fetchProperties() : [];
   const tenants = hasData ? await fetchTenants() : [];
-  const tenantData = tenants && tenants.length > 0 && tenants.map((tenant) => ({
+  const tenantData = hasData && tenants.map((tenant) => ({
     name: formatName(tenant),
     _id: tenant._id,
   }));
@@ -20,8 +20,8 @@ export default async function ExclusionList({ exclusions }) {
     exclusionDate: formatDate(exclusion.exclusionDate),
     exclusionDateFrom: formatDate(exclusion.exclusionDateFrom),
     exclusionDateTo: formatDate(exclusion.exclusionDateTo),
-    property: properties.find(property => property._id === exclusion.property).name,
-    name: tenantData.find(tenant => tenant._id === exclusion.name).name
+    property: properties.find(property => property._id === exclusion.property)?.name || exclusion.property,
+    name: tenantData.find(tenant => tenant._id === exclusion.name)?.name || exclusion.name
   }));
 
   return (<>

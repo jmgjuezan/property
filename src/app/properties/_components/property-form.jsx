@@ -82,6 +82,7 @@ export default function PropertyForm({ property, action }) {
                   type="radio"
                   name="standBy"
                   value={true}
+                  defaultChecked={property.standBy}
                   className="text-blue-600 focus:ring-blue-500"
                 />
                 <span className="text-sm font-medium text-white">Stand By</span>
@@ -91,6 +92,7 @@ export default function PropertyForm({ property, action }) {
                   type="radio"
                   name="standBy"
                   value={false}
+                  defaultChecked={property.standBy !== undefined && !property.standBy}
                   className="text-blue-600 focus:ring-blue-500"
                 />
                 <span className="text-sm font-medium text-white">Operational</span>

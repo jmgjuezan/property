@@ -1,13 +1,19 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import fetchProperties from "@/api/property/get-properties";
 import fetchTenant from "@/api/tenant/get-tenant";
 import { formatAmount, formatDate } from "@/lib/utility";
 
 export default async function TenantForm({ params }) {
-  const { id } = await params;
-  const tenant = id ? await fetchTenant(id) : {};
-  const properties = tenant ? await fetchProperties() : [];
-  const property = tenant && properties && properties.find(property => property._id === tenant.property);
+  const { id } = await params || {};
+  const tenant = await fetchTenant(id) || {};
+  const hasData = tenant.firstName;
+  const properties = hasData && await fetchProperties() || [];
+  const property = hasData && properties.find(property => property._id === tenant.property);
+
+  if (!hasData) {
+    redirect("/tenants");
+  }
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <div className="mt-6 border-t border-white/10">

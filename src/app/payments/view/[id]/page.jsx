@@ -1,20 +1,26 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import fetchPayment from "@/api/payment/get-payment";
 import fetchProperties from "@/api/property/get-properties";
 import fetchTenants from "@/api/tenant/get-tenants";
 import { formatAmount, formatDate, formatName } from "@/lib/utility";
 
 export default async function TenantForm({ params }) {
-  const { id } = await params;
-  const payment = await fetchPayment(id);
-  const properties = await fetchProperties();
-  const property = payment && properties && properties.find(property => property._id === payment.property);
-  const tenants = await fetchTenants();
-  const tenantData = payment && tenants && tenants.map((tenant) => ({
+  const { id } = await params || {};
+  const payment = await fetchPayment(id) || {};
+  const hasData = payment.paymentDate;
+  const properties = hasData && await fetchProperties() || [];
+  const property = hasData && properties.find(property => property._id === payment.property);
+  const tenants = hasData && await fetchTenants() || [];
+  const tenantData = hasData && tenants.map((tenant) => ({
     name: formatName(tenant),
     _id: tenant._id,
   }));
-  const tenant = payment && tenants && tenantData.find(tenant => tenant._id === payment.tenant);
+  const tenant = hasData && tenantData.find(tenant => tenant._id === payment.tenant);
+
+  if (!hasData) {
+    redirect("/payments");
+  }
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <div className="mt-6 border-t border-white/10">

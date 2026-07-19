@@ -1,10 +1,15 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import fetchProperty from "@/api/property/get-property";
 import { formatDate } from "@/lib/utility";
 
 export default async function ViewProperty({ params }) {
   const { id } = await params || {};
   const property = await fetchProperty(id) || {};
+
+  if (!property.name) {
+    redirect("/properties");
+  }
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <div className="mt-6 border-t border-white/10">

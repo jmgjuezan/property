@@ -19,8 +19,8 @@ export default async function PaymentList({ payments }) {
     ...payment,
     paymentDate: formatDate(payment.paymentDate),
     amount: formatAmount(payment.amount),
-    property: properties.find(property => property._id === payment.property).name,
-    tenant: tenantData.find(tenant => tenant._id === payment.tenant).name
+    property: properties.find(property => property._id === payment.property)?.name || payment.property,
+    tenant: tenantData.find(tenant => tenant._id === payment.tenant)?.name || payment.tenant
   }));
 
   return (<>

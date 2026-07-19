@@ -132,7 +132,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 500,
           property: "The Tower 303 Test",
           paymentFor: "Water and Electricity",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
         {
           _id: "2",
@@ -140,7 +140,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 3000,
           property: "The Tower 303 Test",
           paymentFor: "Rent",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
         {
           _id: "3",
@@ -148,7 +148,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 3000,
           property: "The Tower 303 Test",
           paymentFor: "Rent",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
         {
           _id: "4",
@@ -156,7 +156,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 3000,
           property: "The Tower 303 Test",
           paymentFor: "Rent",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
         {
           _id: "5",
@@ -164,7 +164,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 3000,
           property: "The Tower 303 Test",
           paymentFor: "Rent",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
         {
           _id: "6",
@@ -172,7 +172,7 @@ const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLE
           amount: 3000,
           property: "The Tower 303 Test",
           paymentFor: "Rent",
-          paidBy: "John Doe",
+          tenant: "John Doe",
         },
       ],
       exclusions: [
