@@ -1,5 +1,5 @@
 import fetchExclusions from "@/api/exclusion/get-exclusions";
-import ExclusionList from "./_components/exclusion-list";
+import List from "./_components/list";
 
 export const dynamic = "force-dynamic";
 
@@ -8,8 +8,8 @@ export default async function ExclusionsPage() {
 
   return (<main className="grow">
     <div className="mt-10 mb-10 flex items-center justify-center gap-4">
-      <h1 className="text-center font-bold">Exclusion History</h1>
+      <h1 className="text-center font-bold">{`Exclusion History (${exclusions.length})`}</h1>
     </div>
-    <ExclusionList exclusions={exclusions} />
+    <List exclusions={exclusions} />
   </main>);
 }

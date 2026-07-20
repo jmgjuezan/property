@@ -18,7 +18,7 @@ if (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) {
   COLUMNS.push({ key: "actions", label: "" });
 }
 
-export default function PropertyListDesktop({ properties }) {
+export default function Desktop({ properties }) {
   const [sortKey, setSortKey] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 

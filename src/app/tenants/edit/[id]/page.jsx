@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import fetchTenant from "@/api/tenant/get-tenant";
 import updateTenant from "@/api/tenant/update-tenant";
-import TenantForm from "../../_components/tenant-form";
+import Form from "../../_components/form";
 
 export default async function EditTenant({ params }) {
   const { id } = await params || {};
@@ -11,5 +11,5 @@ export default async function EditTenant({ params }) {
     redirect("/tenants");
   }
 
-  return <TenantForm tenant={tenant} action={updateTenant} />;
+  return <Form tenant={tenant} action={updateTenant} />;
 }

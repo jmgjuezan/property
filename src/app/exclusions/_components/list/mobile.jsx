@@ -6,7 +6,7 @@ const VIEW_ENABLED = process.env.NEXT_PUBLIC_ENABLE_VIEW_EXCLUSION === "true";
 const EDIT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_EDIT_EXCLUSION === "true";
 const DELETE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DELETE_EXCLUSION === "true";
 
-export default function ExclusionListMobile({ exclusions }) {
+export default function Mobile({ exclusions }) {
   return (<>
     { ADD_ENABLED && (<div className="text-center mb-5 sm:hidden">
       <Link

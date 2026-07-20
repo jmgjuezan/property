@@ -1,7 +1,7 @@
 import savePayment from "@/api/payment/save-payment";
-import PaymentForm from "../_components/payment-form";
+import Form from "../_components/form";
 
 export default function NewPayment() {
   const newPayment = {};
-  return <PaymentForm payment={newPayment} action={savePayment} />;
+  return <Form payment={newPayment} action={savePayment} />;
 }

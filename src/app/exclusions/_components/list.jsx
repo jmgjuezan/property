@@ -2,12 +2,12 @@ import Link from "next/link";
 import fetchProperties from "@/api/property/get-properties";
 import fetchTenants from "@/api/tenant/get-tenants";
 import { formatDate, formatName } from "@/lib/utility";
-import ExclusionListMobile from "./exclusion-list-mobile";
-import ExclusionListDesktop from "./exclusion-list-desktop";
+import Mobile from "./list/mobile";
+import Desktop from "./list/desktop";
 
 const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_TENANT === "true";
 
-export default async function ExclusionList({ exclusions }) {
+export default async function List({ exclusions }) {
   const hasData = exclusions && exclusions.length > 0;
   const properties = hasData ? await fetchProperties() : [];
   const tenants = hasData ? await fetchTenants() : [];
@@ -26,8 +26,8 @@ export default async function ExclusionList({ exclusions }) {
 
   return (<>
     { hasData ? (<>
-      <ExclusionListMobile exclusions={ exclusionData } />
-      <ExclusionListDesktop exclusions={ exclusionData } />
+      <Mobile exclusions={ exclusionData } />
+      <Desktop exclusions={ exclusionData } />
     </>) : (<>
       { ADD_ENABLED && (<div className="mb-5 flex items-center justify-center">
         <Link

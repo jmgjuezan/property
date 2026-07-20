@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 export default function ByToggle({ exclusionDate, exclusionDateFrom, exclusionDateTo }) {
-  console.log(exclusionDateFrom)
   const [selectedOption, setSelectedOption] = useState(exclusionDateFrom ? "range" : "day");
 
   return (<>

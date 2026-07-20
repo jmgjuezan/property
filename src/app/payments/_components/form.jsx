@@ -3,9 +3,9 @@ import fetchProperties from "@/api/property/get-properties";
 import fetchTenants from "@/api/tenant/get-tenants";
 import { formatName } from "@/lib/utility";
 
-export default async function PaymentForm({ payment, action }) {
-  const properties = await fetchProperties();
-  const tenants = await fetchTenants();
+export default async function Form({ payment, action }) {
+  const properties = await fetchProperties() || [];
+  const tenants = await fetchTenants() || [];
   const tenantData = tenants && tenants.length > 0 && tenants.map((tenant) => ({
     name: formatName(tenant),
     _id: tenant._id,

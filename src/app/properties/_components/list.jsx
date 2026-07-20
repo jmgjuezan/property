@@ -1,17 +1,17 @@
 import Link from "next/link";
-import PropertyListMobile from "./property-list-mobile";
-import PropertyListDesktop from "./property-list-desktop";
+import Mobile from "./list/mobile";
+import Desktop from "./list/desktop";
 
 const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_PROPERTY === "true";
 
-export default function PropertyList({ properties }) {
+export default function List({ properties }) {
   const hasData = properties && properties.length > 0;
   const propertyData = hasData && properties;
 
   return (<>
     { hasData ? (<>
-      <PropertyListMobile properties={ propertyData } />
-      <PropertyListDesktop properties={ propertyData } />
+      <Mobile properties={ propertyData } />
+      <Desktop properties={ propertyData } />
     </>) : (<>
       { ADD_ENABLED && (<div className="mb-5 flex items-center justify-center">
         <Link

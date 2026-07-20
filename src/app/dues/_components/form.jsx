@@ -1,7 +1,7 @@
 import Link from "next/link";
 import fetchProperties from "@/api/property/get-properties";
 
-export default async function DueForm({ due, action }) {
+export default async function Form({ due, action }) {
   const properties = await fetchProperties();
 
   return (<form action={action} className="mx-75 my-5">

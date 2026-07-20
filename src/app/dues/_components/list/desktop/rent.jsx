@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const canPay = process.env.NEXT_PUBLIC_ENABLE_PAY_DUE === "true";
 
-export default function DueListDesktopRent({ due }) {
+export default function Rent({ due }) {
   return (<tr className="border-t border-solid border-gray-800">
     <td className="p-5 text-xs md:text-base">{ due.dueDate }</td>
     <td className="p-5 text-xs md:text-base">{ due.name }</td>

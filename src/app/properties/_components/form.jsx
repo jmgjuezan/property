@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function PropertyForm({ property, action }) {
+export default function Form({ property, action }) {
 
   return (<div className="mt-10 mb-10 flex items-center justify-center gap-4">
     <form action={action}>

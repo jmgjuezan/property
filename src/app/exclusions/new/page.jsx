@@ -1,7 +1,7 @@
-import ExclusionForm from "../_components/exclusion-form";
+import Form from "../_components/form";
 import saveExclusion from "@/api/exclusion/save-exclusion";
 
 export default function NewExclusion() {
   const newExclusion = {};
-  return <ExclusionForm exclusion={newExclusion} action={saveExclusion} />;
+  return <Form exclusion={newExclusion} action={saveExclusion} />;
 }

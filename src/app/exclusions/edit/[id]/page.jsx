@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import fetchExclusion from "@/api/exclusion/get-exclusion";
 import updateExclusion from "@/api/exclusion/update-exclusion";
-import ExclusionForm from "../../_components/exclusion-form";
+import Form from "../../_components/form";
 
 export default async function EditExclusion({ params }) {
   const { id } = await params || {};
@@ -11,5 +11,5 @@ export default async function EditExclusion({ params }) {
     redirect("/exclusions");
   }
 
-  return <ExclusionForm exclusion={exclusion} action={updateExclusion} />;
+  return <Form exclusion={exclusion} action={updateExclusion} />;
 }

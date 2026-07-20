@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import fetchPayment from "@/api/payment/get-payment";
 import updatePayment from "@/api/payment/update-payment";
-import PaymentForm from "../../_components/payment-form";
+import Form from "../../_components/form";
 
 export default async function EditPayment({ params }) {
   const { id } = await params || {};
@@ -11,5 +11,5 @@ export default async function EditPayment({ params }) {
     redirect("/payments");
   }
 
-  return <PaymentForm payment={payment} action={updatePayment} />;
+  return <Form payment={payment} action={updatePayment} />;
 }

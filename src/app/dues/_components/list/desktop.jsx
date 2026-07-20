@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { sort } from "@/lib/utility";
-import DueListDesktopRent from "./due-list-desktop-rent";
-import DueListDesktopUtility from "./due-list-desktop-utility";
+import Rent from "./desktop/rent";
+import Utility from "./desktop/utility";
 
 const COLUMNS = [
   { key: "dueDate", label: "Due Date" },
@@ -18,7 +18,7 @@ const COLUMNS = [
 const canGenerate = process.env.NEXT_PUBLIC_ENABLE_GENERATE_DUE === "true";
 const canAdd = process.env.NEXT_PUBLIC_ENABLE_ADD_DUE === "true";
 
-export default function DueListDesktop({ dues }) {
+export default function Desktop({ dues }) {
   const [sortKey, setSortKey] = useState("dueDate");
   const [sortDirection, setSortDirection] = useState("desc");
 
@@ -84,8 +84,8 @@ export default function DueListDesktop({ dues }) {
       <tbody>
         { sortedDues.map((due) => (
           due.dueFor === "Rent" ?
-            <DueListDesktopRent key={ due._id } due={ due } /> :
-            <DueListDesktopUtility key={ due._id } due={ due } />
+            <Rent key={ due._id } due={ due } /> :
+            <Utility key={ due._id } due={ due } />
         ))}
       </tbody>
     </table>

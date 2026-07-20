@@ -1,10 +1,7 @@
-import PropertyForm from "../_components/property-form";
 import saveProperty from "@/api/property/save-property";
+import Form from "../_components/form";
 
 export default function NewProperty() {
   const newProperty = {};
-  return <PropertyForm
-    property={newProperty}
-    action={saveProperty}
-  />;
+  return <Form property={newProperty} action={saveProperty} />;
 }

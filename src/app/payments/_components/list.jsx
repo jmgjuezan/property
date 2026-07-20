@@ -2,12 +2,12 @@ import Link from "next/link";
 import fetchProperties from "@/api/property/get-properties";
 import fetchTenants from "@/api/tenant/get-tenants";
 import { formatDate, formatAmount, formatName } from "@/lib/utility";
-import PaymentListMobile from "./payment-list-mobile";
-import PaymentListDesktop from "./payment-list-desktop";
+import Mobile from "./list/mobile";
+import Desktop from "./list/desktop";
 
 const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_PAYMENT === "true";
 
-export default async function PaymentList({ payments }) {
+export default async function List({ payments }) {
   const hasData = payments && payments.length > 0;
   const properties = hasData ? await fetchProperties() : [];
   const tenants = hasData ? await fetchTenants() : [];
@@ -25,8 +25,8 @@ export default async function PaymentList({ payments }) {
 
   return (<>
     { hasData ? (<>
-        <PaymentListMobile payments={paymentData} />
-        <PaymentListDesktop payments={paymentData} />
+        <Mobile payments={paymentData} />
+        <Desktop payments={paymentData} />
       </>) : (<>
       { ADD_ENABLED && (<div className="mb-5 flex items-center justify-center">
         <Link

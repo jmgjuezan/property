@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { formatName } from "@/lib/utility";
-import TenantListMobile from "./tenant-list-mobile";
-import TenantListDesktop from "./tenant-list-desktop";
+import Mobile from "./list/mobile";
+import Desktop from "./list/desktop";
 
 const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_EXCLUSION === "true";
 
@@ -17,8 +17,8 @@ export default function TenantList({ tenants }) {
 
   return (<>
     { hasData ? (<>
-      <TenantListMobile tenants={ tenantData } />
-      <TenantListDesktop tenants={ tenantData } />
+      <Mobile tenants={ tenantData } />
+      <Desktop tenants={ tenantData } />
     </>) : (<>
       { ADD_ENABLED && (<div className="mb-5 flex items-center justify-center">
         <Link

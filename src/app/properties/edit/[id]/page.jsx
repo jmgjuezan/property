@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import fetchProperty from "@/api/property/get-property";
 import updateProperty from "@/api/property/update-property";
-import PropertyForm from "../../_components/property-form";
+import Form from "../../_components/form";
 
 export default async function EditProperty({
   params,
@@ -13,5 +13,5 @@ export default async function EditProperty({
     redirect("/properties");
   }
 
-  return <PropertyForm property={property} action={updateProperty} />;
+  return <Form property={property} action={updateProperty} />;
 }

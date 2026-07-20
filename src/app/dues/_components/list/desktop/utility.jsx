@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const canPay = process.env.NEXT_PUBLIC_ENABLE_PAY_DUE === "true";
 
-export default function DueListDesktopUtility({ due }) {
+export default function Utility({ due }) {
   return (<Fragment key={due._id}>
     <tr className="border-t border-solid border-gray-800">
       <td className="p-5 text-xs md:text-base">{due.dueDate}</td>
