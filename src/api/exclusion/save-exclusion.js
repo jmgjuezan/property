@@ -9,7 +9,7 @@ import { EXCLUSIONS_URL } from "../urls";
 export default async function saveExclusion(exclusionFormData) {
   const exclusion = formatRequest(exclusionFormData);
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug(exclusion);
     exclusion._id = String(Math.floor(Math.random() * 100000));
     exclusions.push(exclusion);

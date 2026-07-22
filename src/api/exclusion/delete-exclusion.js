@@ -8,7 +8,7 @@ export default async function deleteExclusion(exclusionFormData) {
   const data = Object.fromEntries(exclusionFormData.entries());
   const id = data._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const index = exclusions.findIndex(e => e._id === id);
     console.debug("Mock exclusion before delete", exclusions);
 

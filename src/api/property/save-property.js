@@ -9,7 +9,7 @@ import { PROPERTIES_URL } from "../urls";
 export default async function saveProperty(propertyFormData) {
   const property = formatRequest(propertyFormData);
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug(property);
     property._id = String(Math.floor(Math.random() * 100000));
     properties.push(property);

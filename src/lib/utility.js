@@ -16,7 +16,8 @@ export function formatDate(value) {
 }
 
 export function formatAmount(value) {
-  return value.toLocaleString("en-US");
+  const rounded = Math.round(value * 100) / 100;
+  return rounded.toLocaleString("en-US");
 }
 
 export function formatName(person) {

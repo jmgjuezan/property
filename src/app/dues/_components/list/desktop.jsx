@@ -6,21 +6,31 @@ import { sort } from "@/lib/utility";
 import Rent from "./desktop/rent";
 import Utility from "./desktop/utility";
 
+const GENERATE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_GENERATE_DUE === "true";
+const ADD_ENABLED = process.env.NEXT_PUBLIC_ENABLE_ADD_PAYMENT === "true";
+const VIEW_ENABLED = process.env.NEXT_PUBLIC_ENABLE_VIEW_PAYMENT === "true";
+const EDIT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_EDIT_PAYMENT === "true";
+const DELETE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DELETE_PAYMENT === "true";
+
 const COLUMNS = [
   { key: "dueDate", label: "Due Date" },
   { key: "name", label: "Name" },
   { key: "property", label: "Property" },
   { key: "dueFor", label: "Type" },
   { key: "totalAmount", label: "Amount" },
-  { key: "actions", label: "" },
 ];
 
-const canGenerate = process.env.NEXT_PUBLIC_ENABLE_GENERATE_DUE === "true";
-const canAdd = process.env.NEXT_PUBLIC_ENABLE_ADD_DUE === "true";
+if (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) {
+  COLUMNS.push({ key: "actions", label: "" });
+}
 
-export default function Desktop({ dues }) {
+export default function Desktop({ dues, generated }) {
   const [sortKey, setSortKey] = useState("dueDate");
   const [sortDirection, setSortDirection] = useState("desc");
+
+  if (generated) {
+    delete COLUMNS[COLUMNS.length - 1];
+  }
 
   const sortedDues = useMemo(() => {
     if (!dues) return [];
@@ -42,20 +52,20 @@ export default function Desktop({ dues }) {
       <thead>
         <tr>
           <td colSpan={COLUMNS.length} align="right" className="pb-5">
-            { canGenerate && (
+            { GENERATE_ENABLED && !generated && (
               <Link
                 href="/dues/generate"
                 className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white mr-2"
               >
-                Generate Due
+                Generate
               </Link>
             )}
-            { canAdd && (
+            { ADD_ENABLED && !generated && (
               <Link
                 href="/dues/new"
                 className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
               >
-                Add Due
+                Add
               </Link>
             )}
           </td>
@@ -82,10 +92,10 @@ export default function Desktop({ dues }) {
         </tr>
       </thead>
       <tbody>
-        { sortedDues.map((due) => (
+        { sortedDues.map((due, index) => (
           due.dueFor === "Rent" ?
-            <Rent key={ due._id } due={ due } /> :
-            <Utility key={ due._id } due={ due } />
+            <Rent key={ due._id ?? (`r-${index}`) } due={ due } /> :
+            <Utility key={ due._id ?? (`u-${index}`) } due={ due } />
         ))}
       </tbody>
     </table>

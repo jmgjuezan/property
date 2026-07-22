@@ -9,7 +9,7 @@ export default async function deleteProperty(propertyFormData) {
   const data = Object.fromEntries(propertyFormData.entries());
   const id = data._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const index = properties.findIndex(p => p._id === id);
     console.debug("Mock properties before delete", properties);
 

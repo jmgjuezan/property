@@ -9,7 +9,7 @@ import { TENANTS_URL } from "../urls";
 export default async function saveTenant(tenantFormData) {
   const tenant = formatRequest(tenantFormData);
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug(tenant);
     tenant._id = String(Math.floor(Math.random() * 100000));
     tenants.push(tenant);

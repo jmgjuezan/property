@@ -1,8 +1,10 @@
+"use server";
+
 import { payments } from "@/lib/constants";
 import { PAYMENTS_URL } from "../urls";
 
 export default async function fetchPayment(id) {
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const payment = payments.find(
       payment => payment._id === id
     );

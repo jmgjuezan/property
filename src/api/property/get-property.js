@@ -1,8 +1,10 @@
+"use server";
+
 import { properties } from "@/lib/constants";
 import { PROPERTIES_URL } from "../urls";
 
 export default async function fetchProperty(id) {
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const property = properties.find(
       property => property._id === id
     );

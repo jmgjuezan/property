@@ -1,8 +1,10 @@
+"use server";
+
 import { tenants } from "@/lib/constants";
 import { TENANTS_URL } from "../urls";
 
 export default async function fetchTenant(id) {
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const tenant = tenants.find(
       tenant => tenant._id === id
     );

@@ -10,7 +10,7 @@ export default async function updateProperty(propertyFormData) {
   const property = formatRequest(propertyFormData);
   const id = property._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug("Updating (mock) property:", property);
     const index = properties.findIndex(p => p._id === id);
 

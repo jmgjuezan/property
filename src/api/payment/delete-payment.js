@@ -8,7 +8,7 @@ export default async function deletePayment(paymentFormData) {
   const data = Object.fromEntries(paymentFormData.entries());
   const id = data._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const index = payments.findIndex(p => p._id === id);
     console.debug("Mock payment before delete", payments);
 

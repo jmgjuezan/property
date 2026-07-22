@@ -9,7 +9,9 @@ export default async function TenantForm({ params }) {
   const tenant = await fetchTenant(id) || {};
   const hasData = tenant.firstName;
   const properties = hasData && await fetchProperties() || [];
-  const property = hasData && properties.find(property => property._id === tenant.property);
+  const property = hasData &&
+                   properties.find(property => property._id === tenant.property) ||
+                   tenant.property;
 
   if (!hasData) {
     redirect("/tenants");
@@ -50,7 +52,7 @@ export default async function TenantForm({ params }) {
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm/6 font-medium text-gray-100 ml-2">Property</dt>
           <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
-            { property.name }
+            { property.name || property }
           </dd>
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

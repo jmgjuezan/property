@@ -9,7 +9,7 @@ export default async function deleteTenant(tenantFormData) {
   const data = Object.fromEntries(tenantFormData.entries());
   const id = data._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     const index = tenants.findIndex(t => t._id === id);
     console.debug("Mock tenants before delete", tenants);
 

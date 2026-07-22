@@ -10,13 +10,18 @@ export default async function TenantForm({ params }) {
   const payment = await fetchPayment(id) || {};
   const hasData = payment.paymentDate;
   const properties = hasData && await fetchProperties() || [];
-  const property = hasData && properties.find(property => property._id === payment.property);
+  const property = hasData && 
+                   properties.find(property => property._id === payment.property) ||
+                   payment.property;
   const tenants = hasData && await fetchTenants() || [];
-  const tenantData = hasData && tenants.map((tenant) => ({
-    name: formatName(tenant),
-    _id: tenant._id,
-  }));
-  const tenant = hasData && tenantData.find(tenant => tenant._id === payment.tenant);
+  const tenantData = hasData &&
+                     tenants.map((tenant) => ({
+                       name: formatName(tenant),
+                       _id: tenant._id,
+                     }));
+  const tenant = hasData &&
+                 tenantData.find(tenant => tenant._id === payment.tenant) ||
+                 payment.tenant
 
   if (!hasData) {
     redirect("/payments");
@@ -57,13 +62,13 @@ export default async function TenantForm({ params }) {
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm/6 font-medium text-gray-100 ml-2">Paid By</dt>
           <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
-            { tenant.name }
+            { tenant.name || tenant }
           </dd>
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm/6 font-medium text-gray-100 ml-2">Property</dt>
           <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2">
-            { property.name }
+            { property.name || property }
           </dd>
         </div>
       </dl>

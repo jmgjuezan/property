@@ -3,32 +3,36 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { dues } from "@/lib/constants";
+import { formatRequest } from "@/lib/utility";
 import { DUES_URL } from "../urls";
 
 export default async function updateDue(dueFormData) {
-  const due = Object.fromEntries(dueFormData.entries());
+  const due = formatRequest(dueFormData);
 
-  due.totalAmount = Number(due.totalAmount);
-  due.electricity = Number(due.electricity || 0);
-  due.water = Number(due.water || 0);
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
+    console.debug("Updating (mock) due:", due);
+    const index = dues.findIndex(d => d._id === id);
 
-  if (process.env.MOCK_ENABLED === "true") {
-    const existingIndex = dues.findIndex((item) => item._id === due._id);
-    if (existingIndex >= 0) {
-      dues[existingIndex] = { ...dues[existingIndex], ...due };
-    } else {
-      due._id = String(Math.floor(Math.random() * 100000));
-      dues.push(due);
+    if (index < 0) { // Not found
+      redirect("/dues");
     }
+
+    dues[index] = {
+      ...dues[index],
+      ...due,
+    };
+    
+    console.debug(dues);
   } else {
     try {
       await fetch(`${DUES_URL}/${due._id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(due),
       });
     } catch (err) {
       console.error(err);
+      console.debug(due);
     }
   }
 

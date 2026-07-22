@@ -10,7 +10,7 @@ export default async function updateExclusion(exclusionFormData) {
   const exclusion = formatRequest(exclusionFormData);
   const id = exclusion._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug("Updating (mock) exclusion:", exclusion);
     const index = exclusions.findIndex(e => e._id === id);
 

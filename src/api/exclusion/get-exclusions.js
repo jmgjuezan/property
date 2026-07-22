@@ -1,8 +1,10 @@
+"use server";
+
 import { exclusions } from "@/lib/constants";
 import { EXCLUSIONS_URL } from "../urls";
 
 export default async function fetchExclusions() {
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     return exclusions;
   }
 

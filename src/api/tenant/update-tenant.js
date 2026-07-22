@@ -10,7 +10,7 @@ export default async function updateTenant(tenantFormData) {
   const tenant = formatRequest(tenantFormData);
   const id = tenant._id;
 
-  if (process.env.MOCK_ENABLED === "true") {
+  if (process.env.NEXT_PUBLIC_MOCK_ENABLED === "true") {
     console.debug("Updating (mock) tenant:", tenant);
     const index = tenants.findIndex(t => t._id === id);
 

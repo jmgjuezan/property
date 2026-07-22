@@ -1,6 +1,6 @@
-console.debug(`MOCK_ENABLED: ${process.env.MOCK_ENABLED}`);
+console.debug(`NEXT_PUBLIC_MOCK_ENABLED: ${process.env.NEXT_PUBLIC_MOCK_ENABLED}`);
 
-const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.MOCK_ENABLED === "true"
+const mockStore = globalThis.__PROPERTY_MOCK_STORE__ ??= process.env.NEXT_PUBLIC_MOCK_ENABLED === "true"
   ? {
       properties: [
         {
