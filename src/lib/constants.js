@@ -198,3 +198,17 @@ export const tenants = mockStore?.tenants ?? null;
 export const dues = mockStore?.dues ?? null;
 export const payments = mockStore?.payments ?? null;
 export const exclusions = mockStore?.exclusions ?? null;
+
+// For app/dues/dues/generate/page.jsx > const selection
+export const DUE_GENERATE_TEST_DATA = {
+  "EXCLUSION_TEST": {
+    "dueYear": 2025,
+    "dueFor": "Water and Electricity",
+    "water": 1246.55,
+    "waterFromDate": "2025-03-07",
+    "waterToDate": "2025-04-06",
+    "electricity": 4212.76,
+    "electricityFromDate": "2025-03-14",
+    "electricityToDate": "2025-04-13",
+  }
+}

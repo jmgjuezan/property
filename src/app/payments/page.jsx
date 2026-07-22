@@ -3,8 +3,9 @@ import List from "./_components/list";
 
 export const dynamic = "force-dynamic";
 
-export default async function PaymentsPage() {
-  const payments = await fetchPayments();
+export default async function PaymentsPage({ searchParams  }) {
+  const { paidBy, property } = await searchParams  || {}
+  const payments = await fetchPayments(paidBy, property);
 
   return (<main className="grow">
     <div className="mt-10 mb-10 flex items-center justify-center gap-4">

@@ -75,7 +75,7 @@ export default function Desktop({ tenants }) {
         {sortedTenants.map((tenant) => (
           <tr key={tenant._id} className="border-t border-solid border-gray-800">
             <td className="p-5 text-xs md:text-base">
-              {tenant.name}
+              {tenant.name}<span title="Moved Out">{tenant.moveOutDate ? " 🚪" : "" }</span>
             </td>
             { (VIEW_ENABLED || EDIT_ENABLED || DELETE_ENABLED) && (<td className="p-5 text-xs md:text-base">
               <div className="flex gap-2">

@@ -147,6 +147,21 @@ export default async function TenantForm({ tenant, action }) {
               />
             </dd>
           </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm/6 font-medium text-gray-100 ml-2 flex items-center">
+              <label htmlFor="moveOutDate">Move Out Date</label>
+            </dt>
+            <dd className="mt-1 text-sm/6 text-gray-400 sm:col-span-2 sm:mt-0 ml-2 flex items-center">
+              <input
+                id="moveOutDate"
+                name="moveOutDate"
+                type="date"
+                defaultValue={tenant.moveOutDate}
+                autoComplete="off"
+                className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 [&::-webkit-calendar-picker-indicator]:invert"
+              />
+            </dd>
+          </div>
 
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm/6 font-medium text-gray-100 ml-2"></dt>

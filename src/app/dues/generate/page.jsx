@@ -27,13 +27,6 @@ export default function GenerateDue() {
   const [error, setError] = useState("");
   const [selection, setSelection] = useState({
     "dueYear": new Date().getFullYear(),
-    "dueFor": "Water and Electricity",
-    "water": 1246.55,
-    "waterFromDate": "2025-03-07",
-    "waterToDate": "2025-04-06",
-    "electricity": 4212.76,
-    "electricityFromDate": "2025-03-14",
-    "electricityToDate": "2025-04-13",
   });
 
   useEffect(() => {
